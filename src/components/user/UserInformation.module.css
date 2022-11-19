@@ -1,0 +1,13 @@
+.userHeading {
+  text-transform: capitalize;
+}
+
+.userContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.userInfo {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}

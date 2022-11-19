@@ -1,0 +1,41 @@
+.banner {
+  width: 100%;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profileContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.profileInfo {
+  grid-column: 2;
+  align-self: center;
+}
+
+.followButton {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  align-self: center;
+  padding: 5px 20px;
+  border: solid white;
+  color: white;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.followButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
+}

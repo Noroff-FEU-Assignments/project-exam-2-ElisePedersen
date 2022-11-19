@@ -1,0 +1,43 @@
+.imageHeading {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.userButton {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  border: solid white;
+  color: white;
+}
+
+.userButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
+}
+
+.userPostContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.userPostLink {
+  text-decoration: none;
+}
+
+.userPost img {
+  width: 100%;
+}
+
+.userPost p {
+  padding: 5px;
+  text-transform: capitalize;
+}
+
+.userPostContent {
+  padding: 0px;
+}

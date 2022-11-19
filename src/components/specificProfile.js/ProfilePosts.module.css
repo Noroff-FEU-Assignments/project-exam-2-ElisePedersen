@@ -1,0 +1,12 @@
+.specificProfilePostImage {
+  width: 100%;
+}
+
+.specificProfilePostContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.specificProfileHeading {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+.listOfPostsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.listOfPostsLink {
+  text-decoration: none;
+}
+
+.postListMedia {
+  padding: 0px;
+}
+
+.postListMedia img {
+  width: 100%;
+  min-height: 200px;
+}
+
+.postListTitle {
+  display: flex;
+  padding: 5px;
+}
+
+.postListIcons {
+  margin-left: auto;
+  gap: 5px;
+  display: flex;
+}

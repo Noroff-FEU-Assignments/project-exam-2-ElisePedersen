@@ -1,0 +1,34 @@
+.loginContent {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.landingpageContainer {
+  margin-top: 8%;
+  background-attachment: fixed;
+  color: white;
+}
+
+.signupButton {
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+
+.signupButton:hover {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+.signupContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.landingpageParagraph {
+  text-align: center;
+  margin: 40px auto;
+}

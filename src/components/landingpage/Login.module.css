@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+}
+
+.formItem {
+  border: solid thin white;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+.button:hover {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}

@@ -1,0 +1,29 @@
+.navigationContainer {
+  flex-direction: row;
+  width: 100%;
+  margin: 0px 10px;
+}
+
+.navigationLogo {
+  width: 50%;
+}
+
+.navigationButton {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  align-self: center;
+  padding: 5px 20px;
+  border: solid white;
+  color: white;
+  text-decoration: none;
+  margin-left: auto;
+  border-radius: 6px;
+}
+
+.navigationButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
+}

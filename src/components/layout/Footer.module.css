@@ -1,0 +1,16 @@
+.footer {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  color: white;
+  padding: 20px;
+  display: grid;
+}
+
+.footerLink {
+  color: white;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  font-size: 105%;
+  color: white;
+}
