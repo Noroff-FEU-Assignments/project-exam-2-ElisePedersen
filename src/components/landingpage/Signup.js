@@ -27,7 +27,7 @@ const schema = yup.object().shape({
     .required("Please enter your email")
     .matches(
       emailRegex,
-      "must be a stud.noroff.no or noroff.no email address."
+      "Must be a stud.noroff.no or noroff.no email address."
     ),
   password: yup
     .string()
@@ -37,6 +37,7 @@ const schema = yup.object().shape({
 
 export default function Signup(props) {
   const [signupError, setSignupError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const {
     register,
@@ -48,6 +49,7 @@ export default function Signup(props) {
 
   async function onSubmit(data) {
     setSignupError(null);
+    setSubmitting(true);
 
     console.log(data);
 
@@ -59,7 +61,8 @@ export default function Signup(props) {
       console.log("error", error);
       setSignupError(error.toString());
       return alert("User already exists");
-      //do not close modal
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -79,37 +82,39 @@ export default function Signup(props) {
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
           {signupError && <FormError>Could not signup</FormError>}
-          <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control name="name" type="text" {...register("name")} />
-            {errors.name && <FormError>{errors.name.message}</FormError>}
-          </Form.Group>
+          <fieldset disabled={submitting}>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control name="name" type="text" {...register("name")} />
+              {errors.name && <FormError>{errors.name.message}</FormError>}
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Label>E-mail</Form.Label>
-            <Form.Control name="email" type="email" {...register("email")} />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control name="email" type="email" {...register("email")} />
+              {errors.email && <FormError>{errors.email.message}</FormError>}
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              name="password"
-              type="password"
-              {...register("password")}
-            />
-            {errors.password && (
-              <FormError>{errors.password.message}</FormError>
-            )}
-          </Form.Group>
-          <Button
-            onClick={props.onHide}
-            variant="primary"
-            type="submit"
-            className={styles.button}
-          >
-            Sign up
-          </Button>
+            <Form.Group className="mb-3" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                name="password"
+                type="password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <FormError>{errors.password.message}</FormError>
+              )}
+            </Form.Group>
+            <Button
+              // onClick={props.onHide}
+              variant="primary"
+              type="submit"
+              className={styles.button}
+            >
+              {submitting ? "Signing up..." : "Sign up"}
+            </Button>
+          </fieldset>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>

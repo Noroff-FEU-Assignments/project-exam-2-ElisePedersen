@@ -14,7 +14,7 @@ import styles from "./Login.module.css";
 const url = BASE_URL + "social/auth/login";
 
 const schema = yup.object().shape({
-  username: yup.string().email().required("Please enter your username"),
+  email: yup.string().email().required("Please enter your email"),
   password: yup.string().required("Please enter your password"),
 });
 
@@ -38,15 +38,8 @@ export default function Login() {
     setSubmitting(true);
     setLoginError(null);
 
-    const postData = {
-      email: data.username,
-      password: data.password,
-    };
-
-    console.log(postData);
-
     try {
-      const response = await axios.post(url, postData);
+      const response = await axios.post(url, data);
       console.log("response", response.data);
       setAuth(response.data);
       history("/explore");
@@ -63,19 +56,17 @@ export default function Login() {
   return (
     <>
       <Form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>Wrong username or password</FormError>}
+        {loginError && <FormError>Wrong email or password</FormError>}
         <fieldset disabled={submitting}>
-          <Form.Group className="mb-3" controlId="username">
-            <Form.Label>Username</Form.Label>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
             <Form.Control
-              name="username"
-              type="text"
-              {...register("username")}
+              name="email"
+              type="email"
+              {...register("email")}
               className={styles.formItem}
             />
-            {errors.username && (
-              <FormError>{errors.username.message}</FormError>
-            )}
+            {errors.email && <FormError>{errors.email.message}</FormError>}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="password">
@@ -92,7 +83,7 @@ export default function Login() {
           </Form.Group>
 
           <Button variant="primary" type="submit" className={styles.button}>
-            {submitting ? "Loggin in..." : "Login"}
+            {submitting ? "Logging in..." : "Login"}
           </Button>
         </fieldset>
       </Form>
