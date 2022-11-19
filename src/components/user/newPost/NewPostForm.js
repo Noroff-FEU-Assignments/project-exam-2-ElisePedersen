@@ -6,9 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import FormError from "../common/FormError";
+import FormError from "../../common/FormError";
 
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({

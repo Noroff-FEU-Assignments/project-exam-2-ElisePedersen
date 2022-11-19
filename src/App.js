@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Explore from "./components/explore/Explore";
 import LandingPage from "./components/landingpage/LandingPage";
 import User from "./components/user/User";
-import EditPost from "./components/editPost/EditPost";
-import NewPost from "./components/newPost/NewPost";
+import EditPost from "./components/user/editPost/EditPost";
+import NewPost from "./components/user/newPost/NewPost";
 import SpecificProfile from "./components/specificProfile.js/SpecificProfile";
 import SpecificPost from "./components/specificPost/SpecificPost";
 
@@ -25,8 +25,8 @@ function App() {
             <Route exact path="/" element={<LandingPage />} />
             <Route exact path="/explore" element={<Explore />} />
             <Route exact path="/user/:name" element={<User />} />
-            <Route exact path="/edit-post/:id" element={<EditPost />} />
-            <Route exact path="/new-post" element={<NewPost />} />
+            <Route exact path="/user/edit-post/:id" element={<EditPost />} />
+            <Route exact path="/user/new-post" element={<NewPost />} />
             <Route exact path="/profile/:name" element={<SpecificProfile />} />
             <Route exact path="/post/:id" element={<SpecificPost />} />
           </Routes>

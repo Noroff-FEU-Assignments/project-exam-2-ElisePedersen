@@ -34,7 +34,7 @@ export default function UserImages() {
       <div className={styles.imageHeading}>
         <h2>Your images</h2>
         {/* {count._count.posts} */}
-        <Link to={`/new-post`}>
+        <Link to={`/user/new-post`}>
           <Button className={styles.userButton}>Create new post</Button>
         </Link>
       </div>
@@ -46,7 +46,7 @@ export default function UserImages() {
                 <ListGroup.Item className={styles.userPostContent}>
                   <img src={post.media} alt={post.title} />
                   <Link
-                    to={`/edit-post/${post.id}`}
+                    to={`/user/edit-post/${post.id}`}
                     className={styles.userPostLink}
                   >
                     <Button className={styles.userButton}>Edit post</Button>

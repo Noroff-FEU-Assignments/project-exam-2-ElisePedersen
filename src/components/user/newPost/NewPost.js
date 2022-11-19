@@ -1,5 +1,5 @@
 import React from "react";
-import Heading from "../layout/Heading";
+import Heading from "../../layout/Heading";
 import NewPostForm from "./NewPostForm";
 
 export default function NewPost() {

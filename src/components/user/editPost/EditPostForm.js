@@ -7,7 +7,7 @@ import DeletePost from "./DeletePost.js";
 // import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 // import FormError from "../common/FormError";
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../../hooks/useAxios";
 
 // const schema = yup.object().shape({
 //   title: yup.string().required("Please insert a title"),
