@@ -24,27 +24,39 @@ export default function ProfilePosts() {
     }
 
     getProfilePosts();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
-      <h2>Posts</h2>
-      <div className={styles.specificProfilePostContainer}>
+      <h2 className={styles.specificProfilePostsHeading}>Posts</h2>
+      <div className={styles.specificProfilePostsContainer}>
         {posts.map((post) => {
           return (
-            <div key={post.id}>
-              <Link to={`/post/${post.id}`}>
-                <Card>
+            <div key={post.id} className={styles.specificProfilePostsContent}>
+              <Card>
+                <Link
+                  to={`/post/${post.id}`}
+                  className={styles.specificProfilePostsLink}
+                >
                   <Card.Img
+                    variant="top"
                     src={post.media}
                     alt={post.title}
-                    className={styles.specificProfilePostImage}
-                  />
+                    className={styles.specificProfilePostsImg}
+                    onError={(event) => {
+                      event.target.src =
+                        "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+                      event.onerror = null;
+                    }}
+                  ></Card.Img>
+                </Link>
+                <Card.Body className={styles.specificProfilePostsBody}>
                   <Card.Title>
                     <p>{post.title}</p>
                   </Card.Title>
-                </Card>
-              </Link>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}

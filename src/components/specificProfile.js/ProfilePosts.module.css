@@ -1,12 +1,37 @@
-.specificProfilePostImage {
+.specificProfilePostsHeading {
+  text-align: center;
+  margin: 50px;
+}
+
+.specificProfilePostsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.specificProfilePostsContent {
+  display: contents;
+}
+
+.specificProfilePostsLink {
+  color: black;
+  text-decoration: none;
+}
+
+.specificProfilePostsLink:hover {
+  color: gray;
+}
+
+.specificProfilePostsImg {
   width: 100%;
 }
 
-.specificProfilePostContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.specificProfilePostsImg:hover {
+  opacity: 0.6;
 }
 
-.specificProfileHeading {
-  text-align: center;
+.specificProfilePostsBody {
+  display: grid;
+  align-items: end;
+  padding: 10px 10px 0px 10px;
 }

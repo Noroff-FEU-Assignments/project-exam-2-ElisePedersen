@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
 import styles from "./ProfileInfo.module.css";
+import Image from "react-bootstrap/Image";
 
 export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
@@ -23,29 +24,37 @@ export default function ProfileInfo() {
     }
 
     getProfile();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
-      <div
+      <Image
         className={styles.banner}
         style={{
+          // backgroundColor: "linear-gradient(to left top, #d22f8c, #fc782e)",
+          // backgroundImage: "linear-gradient(to left top, #d22f8c, #fc782e)",
           backgroundImage: `url('${profile.banner}' )`,
 
           height: 200,
         }}
-      ></div>
-      {/* <img
-        src={profile.banner}
-        alt={profile.name}
-        className={styles.banner}
-      ></img> */}
+        // onError={(event) => {
+        //   event.target.src =
+        //     "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+        //   event.onerror = null;
+        // }}
+      />
       <div className={styles.profileContainer}>
-        <img
+        <Image
           src={profile.avatar}
           alt={profile.name}
           className={styles.avatar}
-        ></img>
+          onError={(event) => {
+            event.target.src =
+              "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?b=1&s=612x612&w=0&k=20&c=IATS1wxpkvh5kuoXceZ40B1UZEDCyfvV93saUjU_mvE=";
+            event.onerror = null;
+          }}
+        />
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
           <Button className={styles.followButton}>Follow user</Button>

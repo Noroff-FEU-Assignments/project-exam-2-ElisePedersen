@@ -23,7 +23,8 @@ export default function Post() {
     }
 
     getPost();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

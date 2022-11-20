@@ -35,7 +35,8 @@ export default function UserInformation() {
     }
 
     getUser();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

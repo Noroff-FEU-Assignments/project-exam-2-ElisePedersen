@@ -27,7 +27,8 @@ export default function UserFollowing() {
     }
 
     getUserFollowing();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

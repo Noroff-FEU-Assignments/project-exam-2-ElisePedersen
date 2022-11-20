@@ -71,7 +71,7 @@ export default function NewPostForm() {
 
           <Form.Group className="mb-3" controlId="image">
             <Form.Label>Image url:</Form.Label>
-            <Form.Control name="image" {...register("image")} />
+            <Form.Control name="image" type="text" {...register("image")} />
             {errors.image && <FormError>{errors.image.message}</FormError>}
           </Form.Group>
 

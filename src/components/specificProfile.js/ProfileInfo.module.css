@@ -4,11 +4,19 @@
   background-position-y: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: linear-gradient(to left top, #d22f8c, #fc782e);
 }
 
 .profileContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.profileContainer img {
+  width: 50%;
+  margin-left: auto;
 }
 
 .avatar {
@@ -19,6 +27,10 @@
 .profileInfo {
   grid-column: 2;
   align-self: center;
+}
+
+.profileInfo h1 {
+  text-transform: capitalize;
 }
 
 .followButton {

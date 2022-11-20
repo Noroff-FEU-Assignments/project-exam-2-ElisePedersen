@@ -49,7 +49,8 @@ export default function EditPostForm() {
     }
 
     editPost();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

@@ -27,7 +27,8 @@ export default function UserImages() {
     }
 
     getUserImages();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

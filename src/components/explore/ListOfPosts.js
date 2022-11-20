@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./ListOfPosts.module.css";
@@ -9,6 +9,8 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const http = useAxios();
 
@@ -22,35 +24,59 @@ export default function ListOfPosts() {
         setPosts(response.data);
       } catch (error) {
         console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getPosts();
-  });
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
 
   return (
     <div className={styles.listOfPostsContainer}>
       {posts.map((post) => {
         return (
-          <div key={post.id}>
-            <Link to={`/post/${post.id}`} className={styles.listOfPostsLink}>
-              <ListGroup className={styles.postListGroup}>
-                <ListGroup.Item className={styles.postListMedia}>
-                  <img src={post.media} alt={post.title} />
-                </ListGroup.Item>
-              </ListGroup>
-            </Link>
-            <ListGroup>
-              <Link to={`/profile/${post.author.name}`}>
-                <ListGroup.Item className={styles.postListTitle}>
-                  <p>{post.author.name}</p>
-                  <div className={styles.postListIcons}>
-                    <FontAwesomeIcon icon={faComment} />
-                    <FontAwesomeIcon icon={faUserPlus} />
-                  </div>
-                </ListGroup.Item>
+          <div key={post.id} className={styles.listOfPostsContent}>
+            <Card>
+              <Link to={`/post/${post.id}`} className={styles.listOfPostsLink}>
+                <Card.Img
+                  variant="top"
+                  src={post.media}
+                  alt={post.title}
+                  className={styles.listOfPostsImg}
+                  onError={(event) => {
+                    event.target.src =
+                      "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+                    event.onerror = null;
+                  }}
+                ></Card.Img>
               </Link>
-            </ListGroup>
+              <Card.Body className={styles.listOfPostsBody}>
+                <Link
+                  to={`/profile/${post.author.name}`}
+                  className={styles.listOfPostsLink}
+                >
+                  <Card.Title className={styles.postListTitle}>
+                    <p>{post.author.name}</p>
+
+                    <div className={styles.postListIcons}>
+                      <FontAwesomeIcon icon={faComment} />
+                      <FontAwesomeIcon icon={faUserPlus} />
+                    </div>
+                  </Card.Title>
+                </Link>
+              </Card.Body>
+            </Card>
           </div>
         );
       })}

@@ -4,26 +4,38 @@
   gap: 20px;
 }
 
+.listOfPostsContent {
+  display: contents;
+}
+
 .listOfPostsLink {
+  color: black;
   text-decoration: none;
 }
 
-.postListMedia {
-  padding: 0px;
+.listOfPostsLink:hover {
+  color: gray;
 }
 
-.postListMedia img {
+.listOfPostsImg {
   width: 100%;
-  min-height: 200px;
+}
+
+.listOfPostsImg:hover {
+  opacity: 0.6;
+}
+
+.listOfPostsBody {
+  display: grid;
+  align-items: end;
 }
 
 .postListTitle {
   display: flex;
-  padding: 5px;
 }
 
 .postListIcons {
   margin-left: auto;
-  gap: 5px;
+  gap: 10px;
   display: flex;
 }
