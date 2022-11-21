@@ -1,3 +1,11 @@
+.specificPostContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.specificPostBody {
+}
+
 .specificPostImage {
   width: 50%;
 }

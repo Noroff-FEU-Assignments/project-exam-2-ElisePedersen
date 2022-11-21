@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./Post.module.css";
 import Heading from "../layout/Heading.js";
+import { Image } from "react-bootstrap";
 
 export default function Post() {
   const [posts, setPosts] = useState([]);
@@ -27,16 +28,17 @@ export default function Post() {
   }, []);
 
   return (
-    <div>
-      <img
+    <div className={styles.specificPostContainer}>
+      <Image
         src={posts.media}
         alt={posts.title}
         className={styles.specificPostImage}
-      ></img>
-
-      <Heading title={posts.title} />
+      />
       <div>
-        <p>{posts.body}</p>
+        <Heading title={posts.title} />
+        <div>
+          <p>{posts.body}</p>
+        </div>
       </div>
     </div>
   );

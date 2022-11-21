@@ -52,7 +52,7 @@ export default function ProfilePosts() {
                   ></Card.Img>
                 </Link>
                 <Card.Body className={styles.specificProfilePostsBody}>
-                  <Card.Title>
+                  <Card.Title className={styles.specificProfilePostsTitle}>
                     <p>{post.title}</p>
                   </Card.Title>
                 </Card.Body>

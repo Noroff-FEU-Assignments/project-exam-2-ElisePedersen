@@ -1,9 +1,11 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Button } from "react-bootstrap";
+
 import styles from "./ProfileInfo.module.css";
 import Image from "react-bootstrap/Image";
+import ProfileFollow from "./ProfileFollow";
+import ProfileUnfollow from "./ProfileUnfollow";
 
 export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
@@ -57,7 +59,10 @@ export default function ProfileInfo() {
         />
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
-          <Button className={styles.followButton}>Follow user</Button>
+          <ProfileFollow />
+          <ProfileUnfollow />
+          {/* Bare vise en om gangen */}
+          {/* {following ? <ProfileFollow/> : <ProfileUnfollow/>} */}
         </div>
       </div>
     </div>
