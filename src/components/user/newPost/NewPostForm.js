@@ -49,6 +49,7 @@ export default function NewPostForm() {
       const response = await http.post(`social/posts`, formData);
       console.log("response", response.data);
       //return alert ("Post is published")
+
       history(`/user/${user.name}`);
     } catch (error) {
       console.log("error", error);

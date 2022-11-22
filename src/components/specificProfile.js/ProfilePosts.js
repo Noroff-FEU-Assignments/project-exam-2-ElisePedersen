@@ -32,6 +32,9 @@ export default function ProfilePosts() {
       <h2 className={styles.specificProfilePostsHeading}>Posts</h2>
       <div className={styles.specificProfilePostsContainer}>
         {posts.map((post) => {
+          if (post.media === null) {
+            post.media = "";
+          }
           return (
             <div key={post.id} className={styles.specificProfilePostsContent}>
               <Card>

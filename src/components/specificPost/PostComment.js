@@ -13,7 +13,7 @@ export default function PostComment() {
     try {
       const response = await http.post(`social/posts/${id}/comment`);
       console.log("response", response);
-      // setComment(response.data);
+      setComment(response.data);
     } catch (error) {
       console.log(error.response.data.status);
     }
@@ -21,5 +21,5 @@ export default function PostComment() {
 
   getComment();
 
-  return <div></div>;
+  return <div>{comment}</div>;
 }

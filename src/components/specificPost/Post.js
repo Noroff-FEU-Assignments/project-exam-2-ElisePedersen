@@ -27,12 +27,20 @@ export default function Post() {
     // eslint-disable-next-line
   }, []);
 
+  if (!posts.media) {
+    posts.media = "";
+  }
   return (
     <div className={styles.specificPostContainer}>
       <Image
         src={posts.media}
         alt={posts.title}
         className={styles.specificPostImage}
+        onError={(event) => {
+          event.target.src =
+            "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+          event.onerror = null;
+        }}
       />
       <div>
         <Heading title={posts.title} />

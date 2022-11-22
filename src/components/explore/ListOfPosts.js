@@ -45,6 +45,9 @@ export default function ListOfPosts() {
   return (
     <div className={styles.listOfPostsContainer}>
       {posts.map((post) => {
+        if (post.media === null) {
+          post.media = "";
+        }
         return (
           <div key={post.id} className={styles.listOfPostsContent}>
             <Card>

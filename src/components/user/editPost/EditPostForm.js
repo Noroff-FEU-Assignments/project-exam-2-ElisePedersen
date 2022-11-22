@@ -35,6 +35,7 @@ export default function EditPostForm() {
       try {
         const response = await http.get(`social/posts/${id}`);
         console.log("response", response.data);
+        document.title = `${edit.title}`;
         if (response) {
           setEdit(response.data);
         }

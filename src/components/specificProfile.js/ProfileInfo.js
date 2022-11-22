@@ -29,6 +29,9 @@ export default function ProfileInfo() {
     // eslint-disable-next-line
   }, []);
 
+  if (profile.avatar === null) {
+    profile.avatar = "";
+  }
   return (
     <div>
       <Image

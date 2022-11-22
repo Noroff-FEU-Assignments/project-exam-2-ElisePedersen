@@ -1,12 +1,12 @@
 import { React, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { ListGroup } from "react-bootstrap";
+import { Card, Image, ListGroup } from "react-bootstrap";
 import styles from "./UserFollow.module.css";
 
 export default function UserFollowing() {
   const [following, setFollowing] = useState([]);
-  // const [count, setCount] = useState([]);
+  // const [count, setCount] = useState(null);
 
   let { name } = useParams();
 
@@ -20,7 +20,8 @@ export default function UserFollowing() {
         );
         console.log("response", response.data);
         setFollowing(response.data.following);
-        // setCount(response.data);
+        // setCount(response.data._count.following.toString());
+        // console.log(response.data._count.following);
       } catch (error) {
         console.log(error.response.data.status);
       }
@@ -29,26 +30,39 @@ export default function UserFollowing() {
     getUserFollowing();
     // eslint-disable-next-line
   }, []);
+  // console.log(count._count.following);
 
   return (
     <div>
       <h2 className={styles.followingHeading}>Profiles you follow</h2>
-      {/* {count._count.posts} */}
+      {/* {count._count} */}
+
       <div className={styles.userPostContainer}>
         {following.map((follow) => {
+          if (following.avatar === null) {
+            following.avatar = "";
+          }
           return (
-            <div key={follow.id} className={styles.userPost}>
-              <Link
-                to={`/profiles/${follow.id}`}
-                className={styles.userPostLink}
-              >
-                <ListGroup>
-                  <ListGroup.Item className={styles.userPostContent}>
-                    <img src={follow.media} alt={follow.title} />
-                    <p>{follow.title}</p>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Link>
+            <div key={follow.name} className={styles.userPost}>
+              <Card>
+                <Link
+                  to={`/profile/${follow.name}`}
+                  className={styles.userPostLink}
+                >
+                  <div>
+                    <Image
+                      src={follow.avatar}
+                      alt={follow.name}
+                      onError={(event) => {
+                        event.target.src =
+                          "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?b=1&s=612x612&w=0&k=20&c=IATS1wxpkvh5kuoXceZ40B1UZEDCyfvV93saUjU_mvE=";
+                        event.onerror = null;
+                      }}
+                    />
+                    <p>{follow.name}</p>
+                  </div>
+                </Link>
+              </Card>
             </div>
           );
         })}
