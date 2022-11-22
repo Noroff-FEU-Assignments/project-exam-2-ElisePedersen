@@ -20,6 +20,7 @@ export default function ProfileInfo() {
         const response = await http.get(`social/profiles/${name}`);
         console.log("response", response);
         setProfile(response.data);
+        document.title = `${response.data.name}`;
       } catch (error) {
         console.log(error.response.data.status);
       }

@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Card, Image, ListGroup } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import styles from "./UserFollow.module.css";
 
 export default function UserFollowing() {
@@ -34,34 +34,38 @@ export default function UserFollowing() {
 
   return (
     <div>
-      <h2 className={styles.followingHeading}>Profiles you follow</h2>
+      <h2 className={styles.userFollowHeading}>Profiles you follow</h2>
       {/* {count._count} */}
 
-      <div className={styles.userPostContainer}>
+      <div className={styles.userFollowContainer}>
         {following.map((follow) => {
-          if (following.avatar === null) {
-            following.avatar = "";
+          if (follow.avatar === null) {
+            follow.avatar = "";
           }
           return (
-            <div key={follow.name} className={styles.userPost}>
-              <Card>
+            <div key={follow.name} className={styles.userFollowContent}>
+              <Card className={styles.userFollowCard}>
                 <Link
                   to={`/profile/${follow.name}`}
-                  className={styles.userPostLink}
+                  className={styles.userFollowLink}
                 >
-                  <div>
-                    <Image
-                      src={follow.avatar}
-                      alt={follow.name}
-                      onError={(event) => {
-                        event.target.src =
-                          "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?b=1&s=612x612&w=0&k=20&c=IATS1wxpkvh5kuoXceZ40B1UZEDCyfvV93saUjU_mvE=";
-                        event.onerror = null;
-                      }}
-                    />
-                    <p>{follow.name}</p>
-                  </div>
+                  <Card.Img
+                    variant="top"
+                    src={follow.avatar}
+                    alt={follow.name}
+                    className={styles.userFollowImg}
+                    onError={(event) => {
+                      event.target.src =
+                        "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?b=1&s=612x612&w=0&k=20&c=IATS1wxpkvh5kuoXceZ40B1UZEDCyfvV93saUjU_mvE=";
+                      event.onerror = null;
+                    }}
+                  ></Card.Img>
                 </Link>
+                <Card.Body className={styles.userFollowBody}>
+                  <Card.Title className={styles.userFollowTitle}>
+                    <p>{follow.name}</p>
+                  </Card.Title>
+                </Card.Body>
               </Card>
             </div>
           );

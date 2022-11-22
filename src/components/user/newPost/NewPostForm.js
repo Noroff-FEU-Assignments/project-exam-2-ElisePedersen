@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please insert a title"),
-  image: yup.string().required("Please insert an image url"),
+  body: yup.string(),
+  tags: yup.string(),
+  image: yup.string(),
 });
 
 export default function NewPostForm() {
@@ -40,6 +42,8 @@ export default function NewPostForm() {
 
     const formData = {
       title: data.title,
+      body: data.body,
+      tags: data.tags.split(" "),
       media: data.image,
     };
 
@@ -68,6 +72,23 @@ export default function NewPostForm() {
             <Form.Label>Title</Form.Label>
             <Form.Control name="title" type="text" {...register("title")} />
             {errors.title && <FormError>{errors.title.message}</FormError>}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="body">
+            <Form.Label>Body</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="body"
+              {...register("body")}
+            />
+            {errors.body && <FormError>{errors.body.message}</FormError>}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="tags">
+            <Form.Label>Tags</Form.Label>
+            <Form.Control name="tags" type="text" {...register("tags")} />
+            {errors.tags && <FormError>{errors.tags.message}</FormError>}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="image">

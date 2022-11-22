@@ -18,7 +18,7 @@ export default function UserInformation() {
         const response = await http.get(`social/profiles/${name}`);
         console.log("response", response.data);
         setUser(response.data);
-        document.title = `${user.name}`;
+        document.title = `${response.data.name}`;
 
         if (user.banner === null) {
           //user.banner = "";

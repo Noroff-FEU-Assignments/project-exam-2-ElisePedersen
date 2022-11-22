@@ -8,6 +8,7 @@ import DeletePost from "./DeletePost.js";
 // import Button from "react-bootstrap/Button";
 // import FormError from "../common/FormError";
 import useAxios from "../../../hooks/useAxios";
+import { Form } from "react-bootstrap";
 
 // const schema = yup.object().shape({
 //   title: yup.string().required("Please insert a title"),
@@ -35,7 +36,7 @@ export default function EditPostForm() {
       try {
         const response = await http.get(`social/posts/${id}`);
         console.log("response", response.data);
-        document.title = `${edit.title}`;
+        document.title = `Edit post - ${response.data.title}`;
         if (response) {
           setEdit(response.data);
         }
@@ -61,6 +62,20 @@ export default function EditPostForm() {
         <img src={edit.media} alt={edit.title}></img>
       </div>
       <DeletePost id={edit.id} />
+      <Form>
+        <Form.Group className="mb-3" controlId="">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="">
+          <Form.Label>Body</Form.Label>
+          <Form.Control as="textarea" rows={3} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="">
+          <Form.Label>Image</Form.Label>
+          <Form.Control type="text" />
+        </Form.Group>
+      </Form>
       {/* <Form onSubmit={handleSubmit(editPost)}>
         {editError && <FormError>{editError}</FormError>}
         <fieldset disabled={submitting}>
