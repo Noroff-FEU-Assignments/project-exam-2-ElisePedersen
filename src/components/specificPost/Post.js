@@ -27,9 +27,6 @@ export default function Post() {
     // eslint-disable-next-line
   }, []);
 
-  if (!posts.media) {
-    posts.media = "";
-  }
   return (
     <div className={styles.specificPostContainer}>
       <Image
