@@ -70,6 +70,8 @@ export default function Post() {
           );
         })}
       </div>
+      {/* legge til reactions ett sted på denne siden. kanskje rett under bilde container */}
+
       {/* <Tabs>
         <Tab eventKey="comment" title="Comment">
           <PostComment />

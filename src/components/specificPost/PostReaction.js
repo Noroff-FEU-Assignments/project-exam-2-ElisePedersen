@@ -53,7 +53,7 @@ export default function PostReaction() {
         <option>👌</option>
         <option>👋</option>
         <option>🙏</option>
-        {/* sett inn andre emojier og endre alt til bootstrap */}
+        {/* sett inn andre emojier og endre alt til bootstrap, legge til error messages, submitting på button og fieldset*/}
       </select>
       <button>Post emoji</button>
     </form>
