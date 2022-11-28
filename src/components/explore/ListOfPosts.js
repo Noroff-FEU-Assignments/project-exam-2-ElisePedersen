@@ -56,7 +56,6 @@ export default function ListOfPosts() {
                   variant="top"
                   src={post.media}
                   alt={post.title}
-                  className={styles.listOfPostsImg}
                   onError={(event) => {
                     event.target.src =
                       "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";

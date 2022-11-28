@@ -1,13 +1,65 @@
-.userHeading {
+.userInfoHeading {
   text-transform: capitalize;
+  margin-bottom: 20px;
 }
 
-.userContainer {
+.userInfoContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 50px;
+  gap: 40px;
 }
 
-.userInfo {
+@media (max-width: 767px) {
+  .userInfoContainer {
+    grid-template-columns: unset;
+  }
+}
+
+.userInfoContainer img {
+  border-radius: 50%;
+  width: 50%;
+  justify-self: end;
+}
+
+@media (max-width: 767px) {
+  .userInfoContainer img {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 350px) {
+  .userInfoContainer img {
+    width: 100%;
+  }
+}
+
+.userInfoContent {
+  align-self: center;
+}
+
+@media (max-width: 767px) {
+  .userInfoContent {
+    text-align: center;
+  }
+}
+
+.userInfoLink {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.userInfoButton {
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  color: black;
+  text-decoration: underline;
+  padding: 0px;
+}
+
+.userInfoButton:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
 }

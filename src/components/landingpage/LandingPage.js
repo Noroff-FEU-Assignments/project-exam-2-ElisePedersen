@@ -4,12 +4,19 @@ import { Button } from "react-bootstrap";
 import styles from "./LandingPage.module.css";
 import logo from "../../images/Share-ish.png";
 import Signup from "./Signup";
+import { useLocation } from "react-router-dom";
 
 export default function LandingPage() {
   const [signupModalShow, setSignupModalShow] = React.useState(false);
-  document.body.style =
-    "background: linear-gradient(to left top, #d22f8c, #fc782e)";
 
+  const location = useLocation();
+  console.log(location);
+  if (location.pathname === "/") {
+    document.body.style =
+      "background: linear-gradient(to left top, #d22f8c, #fc782e)";
+  } else {
+    document.body.style = "background: #000000";
+  }
   //må fikse sånn at denne bare er på landingpage
   //må fjerne footer og profile button på landing page
   return (

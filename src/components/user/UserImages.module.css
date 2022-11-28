@@ -1,22 +1,15 @@
-.imageHeading {
+.userPostHeading {
   display: flex;
   gap: 20px;
   justify-content: center;
+  margin: 50px;
 }
 
-.userButton {
-  background: linear-gradient(to left top, #d22f8c, #fc782e);
-  border: solid white;
-  color: white;
-}
-
-.userButton:hover {
-  border: solid transparent;
-  background: linear-gradient(to left top, #d22f8c, #fc782e),
-    linear-gradient(to left top, #d22f8c, #fc782e);
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  color: white;
+@media (max-width: 468px) {
+  .userPostHeading {
+    display: grid;
+    gap: 0px;
+  }
 }
 
 .userPostContainer {
@@ -25,19 +18,53 @@
   gap: 20px;
 }
 
-.userPostLink {
-  text-decoration: none;
+@media (max-width: 991px) {
+  .userPostContainer {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.userPost img {
-  width: 100%;
-}
-
-.userPost p {
-  padding: 5px;
-  text-transform: capitalize;
+@media (max-width: 560px) {
+  .userPostContainer {
+    grid-template-columns: unset;
+  }
 }
 
 .userPostContent {
-  padding: 0px;
+  display: contents;
+}
+
+.userPostLink {
+  color: black;
+  text-decoration: none;
+}
+
+.userPostLink:hover {
+  opacity: 0.6;
+  color: black;
+}
+
+.userPostBody {
+  display: grid;
+  align-items: end;
+  grid-template-rows: 1fr;
+}
+
+.userPostTitle {
+  display: flex;
+  font-size: 100%;
+}
+.userPostButton {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  border: solid white;
+  color: white;
+}
+
+.userPostButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
 }

@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
-import { Button, ListGroup } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import styles from "./UserImages.module.css";
 
 export default function UserImages() {
@@ -32,28 +32,39 @@ export default function UserImages() {
 
   return (
     <div>
-      <div className={styles.imageHeading}>
+      <div className={styles.userPostHeading}>
         <h2>Your images</h2>
         {/* {count._count.posts} */}
         <Link to={`/user/new-post`}>
-          <Button className={styles.userButton}>Create new post</Button>
+          <Button className={styles.userPostButton}>Create new post</Button>
         </Link>
       </div>
       <div className={styles.userPostContainer}>
         {posts.map((post) => {
           return (
-            <div key={post.id} className={styles.userPost}>
-              <ListGroup>
-                <ListGroup.Item className={styles.userPostContent}>
-                  <img src={post.media} alt={post.title} />
-                  <Link
-                    to={`/user/edit-post/${post.id}`}
-                    className={styles.userPostLink}
-                  >
-                    <Button className={styles.userButton}>Edit post</Button>
+            <div key={post.id} className={styles.userPostContent}>
+              <Card>
+                <Link to={`/post/${post.id}`} className={styles.userPostLink}>
+                  <Card.Img
+                    varian="top"
+                    src={post.media}
+                    alt={post.title}
+                    onError={(event) => {
+                      event.target.src =
+                        "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+                      event.onerror = null;
+                    }}
+                  ></Card.Img>
+                </Link>
+                <Card.Body className={styles.userPostBody}>
+                  <Card.Title className={styles.userPostTitle}>
+                    <p>{post.title}</p>
+                  </Card.Title>
+                  <Link to={`/user/edit-post/${post.id}`}>
+                    <Button className={styles.userPostButton}>Edit post</Button>
                   </Link>
-                </ListGroup.Item>
-              </ListGroup>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}

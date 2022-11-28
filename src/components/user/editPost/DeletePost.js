@@ -2,6 +2,7 @@ import useAxios from "../../../hooks/useAxios";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import styles from "./DeletePost.module.css";
 
 export default function DeletePost({ id }) {
   const [, setError] = useState(null);
@@ -18,7 +19,6 @@ export default function DeletePost({ id }) {
         const response = await http.delete(`/social/posts/${id}`);
         console.log("response", response);
         history(`/user/${user.name}`);
-        //Working sometimes, sometimes not. why?
       } catch (error) {
         console.log(error.toString());
         setError(error);
@@ -28,7 +28,9 @@ export default function DeletePost({ id }) {
 
   return (
     <>
-      <Button onClick={deletePost}>Delete post</Button>
+      <Button onClick={deletePost} className={styles.deletePostButton}>
+        Delete post
+      </Button>
     </>
   );
 }

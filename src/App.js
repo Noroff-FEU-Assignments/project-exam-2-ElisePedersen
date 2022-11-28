@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/layout/Navigation";
 import { AuthProvider } from "./context/AuthContext";
 import Footer from "./components/layout/Footer";
+import EditAvatar from "./components/user/editProfile/EditAvatar";
+import EditBanner from "./components/user/editProfile/EditBanner";
 
 function App() {
   return (
@@ -23,10 +25,22 @@ function App() {
         <Container>
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
+
             <Route exact path="/explore" element={<Explore />} />
             <Route exact path="/user/:name" element={<User />} />
             <Route exact path="/user/edit-post/:id" element={<EditPost />} />
             <Route exact path="/user/new-post" element={<NewPost />} />
+            <Route
+              exact
+              path="/user/edit-banner/:name"
+              element={<EditBanner />}
+            />
+            <Route
+              exact
+              path="/user/edit-avatar/:name"
+              element={<EditAvatar />}
+            />
+
             <Route exact path="/profile/:name" element={<SpecificProfile />} />
             <Route exact path="/post/:id" element={<SpecificPost />} />
           </Routes>

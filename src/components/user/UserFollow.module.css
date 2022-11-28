@@ -4,6 +4,18 @@
   gap: 20px;
 }
 
+@media (max-width: 991px) {
+  .userFollowContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .userFollowContainer {
+    grid-template-columns: unset;
+  }
+}
+
 .userFollowHeading {
   text-align: center;
   margin: 50px;
@@ -32,6 +44,7 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
+  border: solid thin #dee2e6;
 }
 
 .userFollowBody {

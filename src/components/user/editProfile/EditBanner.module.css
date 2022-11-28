@@ -1,0 +1,21 @@
+.editBannerForm {
+  border: solid thin #dee2e6;
+  border-radius: 0.375rem;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.changeProfileButton {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  border: solid white;
+  color: white;
+}
+
+.changeProfileButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
+}

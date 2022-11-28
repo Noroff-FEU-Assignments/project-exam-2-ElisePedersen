@@ -1,9 +1,8 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./UserInformation.module.css";
-import ChangeBanner from "./ChangeBanner";
-import ChangeAvatar from "./ChangeAvatar";
 
 export default function UserInformation() {
   const [user, setUser] = useState([]);
@@ -20,15 +19,15 @@ export default function UserInformation() {
         setUser(response.data);
         document.title = `${response.data.name}`;
 
-        if (user.banner === null) {
-          //user.banner = "";
-          //response.data.banner = "";
-          //Do something
+        if (response.data.avatar === null || response.data.avatar === "") {
+          response.data.avatar =
+            "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
         }
 
-        if (!user.avatar) {
-          //Do something
-        }
+        // if (response.data.banner === null || response.data.banner === "") {
+        //   response.data.banner =
+        //     "https://cdn.pixabay.com/photo/2016/10/04/17/12/banner-1714905__340.jpg";
+        // }
       } catch (error) {
         console.log(error.response.data.status);
       }
@@ -41,19 +40,24 @@ export default function UserInformation() {
   return (
     <div>
       <div
-        className={styles.banner}
         style={{
           backgroundImage: `url('${user.banner}' )`,
-
+          backgroundColor: "lightgray",
           height: 200,
         }}
       ></div>
-      <div className={styles.userContainer}>
+      <div className={styles.userInfoContainer}>
         <img src={user.avatar} alt={user.name}></img>
-        <div className={styles.userInfo}>
-          <h1 className={styles.userHeading}>{user.name}</h1>
-          <ChangeBanner />
-          <ChangeAvatar />
+        <div className={styles.userInfoContent}>
+          <h1 className={styles.userInfoHeading}>{user.name}</h1>
+          <div className={styles.userInfoLink}>
+            <Link to={`/user/edit-banner/${user.name}`}>
+              <Button className={styles.userInfoButton}>Change banner</Button>
+            </Link>
+            <Link to={`/user/edit-avatar/${user.name}`}>
+              <Button className={styles.userInfoButton}>Change avatar</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

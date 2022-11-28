@@ -14,14 +14,7 @@
 }
 
 .listOfPostsLink:hover {
-  color: gray;
-}
-
-.listOfPostsImg {
-  width: 100%;
-}
-
-.listOfPostsImg:hover {
+  color: black;
   opacity: 0.6;
 }
 
