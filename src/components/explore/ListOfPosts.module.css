@@ -4,6 +4,12 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .listOfPostsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .listOfPostsContent {
   display: contents;
 }
