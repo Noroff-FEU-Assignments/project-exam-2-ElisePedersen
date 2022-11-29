@@ -15,7 +15,7 @@ export default function Navigation() {
         </NavLink>
         <NavLink
           // to={`/user/:name`}
-          // to={`/user/${user.name}`}
+          to={`/user/${user.name}`}
           className={styles.navigationButton}
         >
           Profile
