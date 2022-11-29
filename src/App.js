@@ -9,14 +9,33 @@ import SpecificProfile from "./components/specificProfile.js/SpecificProfile";
 import SpecificPost from "./components/specificPost/SpecificPost";
 
 import Container from "react-bootstrap/Container";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navigation from "./components/layout/Navigation";
 import { AuthProvider } from "./context/AuthContext";
 import Footer from "./components/layout/Footer";
 import EditAvatar from "./components/user/editProfile/EditAvatar";
 import EditBanner from "./components/user/editProfile/EditBanner";
+import { useEffect } from "react";
 
 function App() {
+  // const location = useLocation();
+  //   console.log(location.pathname);
+  // useEffect(function () {
+
+  //   if (location.pathname === "/") {
+  //     document.body.style =
+  //       "background: linear-gradient(to left top, #d22f8c, #fc782e)";
+  //   } else {
+  //     document.body.style = "background: #000000";
+  //   }
+
+  // });
+
   return (
     <AuthProvider>
       <Router>

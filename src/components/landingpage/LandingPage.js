@@ -10,7 +10,7 @@ export default function LandingPage() {
   const [signupModalShow, setSignupModalShow] = React.useState(false);
 
   const location = useLocation();
-  console.log(location);
+  console.log(location.pathname);
   if (location.pathname === "/") {
     document.body.style =
       "background: linear-gradient(to left top, #d22f8c, #fc782e)";
