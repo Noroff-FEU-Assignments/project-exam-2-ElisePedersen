@@ -1,0 +1,5 @@
+.spinner {
+  background: linear-gradient(to left top, #d22f8c, #fc782e);
+  display: grid;
+  margin: 0px auto;
+}

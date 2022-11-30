@@ -6,6 +6,7 @@ import styles from "./ListOfPosts.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
@@ -35,7 +36,11 @@ export default function ListOfPosts() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error) {

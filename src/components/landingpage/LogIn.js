@@ -82,7 +82,11 @@ export default function Login() {
             )}
           </Form.Group>
 
-          <Button variant="primary" type="submit" className={styles.button}>
+          <Button
+            variant="primary"
+            type="submit"
+            className={styles.loginButton}
+          >
             {submitting ? "Logging in..." : "Login"}
           </Button>
         </fieldset>

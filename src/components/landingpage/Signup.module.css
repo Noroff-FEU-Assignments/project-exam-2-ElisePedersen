@@ -3,16 +3,19 @@
   font-family: "Poppins", sans-serif;
 }
 
-.button {
+.signupButton {
   background: linear-gradient(to left top, #d22f8c, #fc782e);
   border: solid white;
   color: white;
 }
 
-.button:hover {
-  background: transparent;
-  border-color: black;
-  color: black;
+.signupButton:hover {
+  border: solid transparent;
+  background: linear-gradient(to left top, #d22f8c, #fc782e),
+    linear-gradient(to left top, #d22f8c, #fc782e);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  color: white;
 }
 
 .closeButton {

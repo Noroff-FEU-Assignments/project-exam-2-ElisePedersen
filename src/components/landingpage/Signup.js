@@ -110,7 +110,7 @@ export default function Signup(props) {
               // onClick={props.onHide}
               variant="primary"
               type="submit"
-              className={styles.button}
+              className={styles.signupButton}
             >
               {submitting ? "Signing up..." : "Sign up"}
             </Button>
