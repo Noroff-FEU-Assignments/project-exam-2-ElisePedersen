@@ -26,7 +26,6 @@ export default function PostComment() {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -64,7 +63,7 @@ export default function PostComment() {
       {commentError && <FormError>{commentError}</FormError>}
       <fieldset disabled={submitting}>
         <Form.Group className="mb-3" controlId="message">
-          <Form.Label>Message</Form.Label>
+          <Form.Label>Comment</Form.Label>
           <Form.Control
             as="textarea"
             name="message"

@@ -65,7 +65,7 @@ export default function ProfileInfo() {
           <h1>{profile.name}</h1>
           <ProfileFollow />
           <ProfileUnfollow />
-          {/* Bare vise en om gangen */}
+          {/* Bare vise en om gangen. i utgangspunktet må den jo være follow, også endre på useffect */}
           {/* {following ? <ProfileFollow/> : <ProfileUnfollow/>} */}
         </div>
       </div>

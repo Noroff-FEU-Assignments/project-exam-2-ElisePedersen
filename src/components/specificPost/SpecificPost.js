@@ -8,8 +8,10 @@ export default function SpecificPost() {
   return (
     <>
       <Post />
-      <PostComment />
-      <PostReaction />
+      <div>
+        <PostReaction />
+        <PostComment />
+      </div>
     </>
   );
 }

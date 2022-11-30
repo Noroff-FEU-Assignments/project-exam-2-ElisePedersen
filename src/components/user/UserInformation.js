@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./UserInformation.module.css";
+import Logout from "./Logout";
 
 export default function UserInformation() {
   const [user, setUser] = useState([]);
@@ -57,6 +58,7 @@ export default function UserInformation() {
             <Link to={`/user/edit-avatar/${user.name}`}>
               <Button className={styles.userInfoButton}>Change avatar</Button>
             </Link>
+            <Logout />
           </div>
         </div>
       </div>

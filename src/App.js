@@ -7,35 +7,21 @@ import EditPost from "./components/user/editPost/EditPost";
 import NewPost from "./components/user/newPost/NewPost";
 import SpecificProfile from "./components/specificProfile.js/SpecificProfile";
 import SpecificPost from "./components/specificPost/SpecificPost";
-
-import Container from "react-bootstrap/Container";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/layout/Navigation";
 import { AuthProvider } from "./context/AuthContext";
-import Footer from "./components/layout/Footer";
+
 import EditAvatar from "./components/user/editProfile/EditAvatar";
 import EditBanner from "./components/user/editProfile/EditBanner";
+import Layout from "./components/layout/Layout";
 
 function App() {
-  // const location = useLocation();
-  //   console.log(location.pathname);
-  // useEffect(function () {
-
-  //   if (location.pathname === "/") {
-  //     document.body.style =
-  //       "background: linear-gradient(to left top, #d22f8c, #fc782e)";
-  //   } else {
-  //     document.body.style = "background: #000000";
-  //   }
-
-  // });
-
   return (
     <AuthProvider>
       <Router>
         <Navigation />
 
-        <Container>
+        <Layout>
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
 
@@ -57,8 +43,7 @@ function App() {
             <Route exact path="/profile/:name" element={<SpecificProfile />} />
             <Route exact path="/post/:id" element={<SpecificPost />} />
           </Routes>
-        </Container>
-        <Footer />
+        </Layout>
       </Router>
     </AuthProvider>
   );

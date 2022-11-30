@@ -4,21 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { React, useContext } from "react";
 
 export default function Logout() {
-  const history = useNavigate();
-
   const [auth, setAuth] = useContext(AuthContext);
   console.log(auth);
+  const history = useNavigate();
 
-  function onSubmit() {
-    if (auth) {
-      setAuth(null);
-      history("/");
-    }
-  }
+  const logout = () => {
+    setAuth(null);
+    history("/");
+  };
 
   return (
     <div>
-      <Button type="submit" onClick={onSubmit()}>
+      <Button variant="primary" type="submit" onClick={logout}>
         Logout
       </Button>
     </div>

@@ -6,8 +6,10 @@ import Heading from "../layout/Heading.js";
 import { Image } from "react-bootstrap";
 
 export default function Post() {
+  const [author, setAuthor] = useState([]);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
+  const [reactions, setReactions] = useState([]);
 
   let { id } = useParams();
 
@@ -20,8 +22,12 @@ export default function Post() {
           `social/posts/${id}?_author=true&_comments=true&_reactions=true`
         );
         console.log("response", response);
+
+        setAuthor(response.data.author);
+        console.log(response.data.author);
         setPosts(response.data);
         setComments(response.data.comments);
+        setReactions(response.data.reactions);
       } catch (error) {
         console.log(error.response.data.status);
       }
@@ -33,6 +39,17 @@ export default function Post() {
 
   return (
     <div className={styles.specificPostContainer}>
+      {/* <div className={styles.specificAuthorContainer}>
+        {posts.values(author).map((name) => {
+          return <div key={author.name}>{author.name}</div>;
+        })}
+      </div> */}
+
+      {/* <div>
+        {author.map((user) => {
+          return <div key={user.name}>{user.name}</div>;
+        })}
+      </div> */}
       <div className={styles.specificPostContent}>
         <Image
           src={posts.media}
@@ -46,10 +63,22 @@ export default function Post() {
         />
         <div>
           <Heading title={posts.title} />
+          {/* <Link to={`/profile/${posts.author.name}`}>{posts.author.name}</Link> */}
           <div>
             <p>{posts.body}</p>
           </div>
         </div>
+      </div>
+      <div className={styles.specificReactionContainer}>
+        {reactions.map((reaction) => {
+          return (
+            <div key={reaction.id} className={styles.specificReactionContent}>
+              {reaction.symbol}
+              {reaction.count}
+            </div>
+          );
+        })}
+        {/* reaction har ingen unique key jeg kan legge til. har bare count, symbol og postId. skal jeg bare slette hele key greien? */}
       </div>
       <div className={styles.specificCommentContainer}>
         {comments.map((comment) => {
@@ -62,6 +91,11 @@ export default function Post() {
                 <Image
                   src={comment.author.avatar}
                   className={styles.specificCommentAvatar}
+                  onError={(event) => {
+                    event.target.src =
+                      "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
+                    event.onerror = null;
+                  }}
                 ></Image>{" "}
                 {comment.owner}
               </Link>
@@ -70,8 +104,7 @@ export default function Post() {
           );
         })}
       </div>
-      {/* legge til reactions ett sted på denne siden. kanskje rett under bilde container */}
-
+      {/* style emojiene fint */}
       {/* <Tabs>
         <Tab eventKey="comment" title="Comment">
           <PostComment />

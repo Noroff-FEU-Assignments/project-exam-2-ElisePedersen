@@ -10,6 +10,10 @@
   color: white;
 }
 
+.landingpageContainer img {
+  width: 50%;
+}
+
 .signupButton {
   color: black;
   background-color: white;
@@ -26,9 +30,24 @@
   display: flex;
   align-items: baseline;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .landingpageParagraph {
   text-align: center;
   margin: 40px auto;
+}
+
+@media (max-width: 575px) {
+  .landingpageContainer img {
+    display: grid;
+    margin: 0px auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .signupContainer {
+    gap: unset;
+    margin-top: 20px;
+  }
 }
