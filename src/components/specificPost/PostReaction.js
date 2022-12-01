@@ -47,23 +47,28 @@ export default function PostReaction() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(Reaction)}>
+    <Form
+      onSubmit={handleSubmit(Reaction)}
+      className={styles.postReactionContainer}
+    >
       {reaction && <div>Your emoji was successful</div>}
       {reactionError && <FormError>{reactionError}</FormError>}
       <fieldset disabled={submitting}>
-        <Form.Select
-          aria-label="Default select example"
-          value={emoji}
-          {...register("symbol")}
-          onChange={(e) => setEmoji(e.target.value)}
-        >
-          <option value="">Select an emoji</option>
-          <option>🤩</option>
-          <option>😃</option>
-          <option>👏</option>
-          <option>👋</option>
-          <option>🧡</option>
-        </Form.Select>
+        <Form.Group className="mb-3" controlId="symbol">
+          <Form.Select
+            aria-label="Default select example"
+            value={emoji}
+            {...register("symbol")}
+            onChange={(e) => setEmoji(e.target.value)}
+          >
+            <option value="">Select an emoji</option>
+            <option>🤩</option>
+            <option>😃</option>
+            <option>👏</option>
+            <option>👋</option>
+            <option>🧡</option>
+          </Form.Select>
+        </Form.Group>
         {errors.message && <FormError>{errors.message.message}</FormError>}
         <Button
           variant="primary"

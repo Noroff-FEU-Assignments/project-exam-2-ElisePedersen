@@ -1,0 +1,19 @@
+.specificPostSelectContainers {
+  display: grid;
+  max-width: 1100px;
+  margin: 0px auto;
+  gap: 20px;
+  grid-template-columns: 4fr 1fr;
+}
+
+@media (max-width: 992px) {
+  .specificPostSelectContainers {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .specificPostSelectContainers {
+    grid-template-columns: unset;
+  }
+}

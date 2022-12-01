@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { Image } from "react-bootstrap";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
@@ -21,10 +22,8 @@ export default function ListOfPosts() {
         const response = await http.get(
           "social/posts?_author=true&_comments=true&_reactions=true"
         );
-        console.log("response", response);
         setPosts(response.data);
       } catch (error) {
-        console.log(error.response.data.status);
         setError(error.toString());
       } finally {
         setLoading(false);
@@ -53,6 +52,10 @@ export default function ListOfPosts() {
         if (post.media === null) {
           post.media = "";
         }
+
+        if (post.author.avatar === null) {
+          post.author.avatar = "";
+        }
         return (
           <div key={post.id} className={styles.listOfPostsContent}>
             <Card>
@@ -74,7 +77,19 @@ export default function ListOfPosts() {
                   className={styles.listOfPostsLink}
                 >
                   <Card.Title className={styles.postListTitle}>
-                    <p>{post.author.name}</p>
+                    <div className={styles.postListTitleContent}>
+                      <Image
+                        roundedCircle
+                        src={post.author.avatar}
+                        className={styles.postListTitleAvatar}
+                        onError={(event) => {
+                          event.target.src =
+                            "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
+                          event.onerror = null;
+                        }}
+                      ></Image>
+                      <p>{post.author.name}</p>
+                    </div>
 
                     <div className={styles.postListIcons}>
                       <FontAwesomeIcon icon={faComment} />

@@ -34,7 +34,6 @@ export default function PostComment() {
   async function Comment(data) {
     setSubmitting(true);
     setCommentError(null);
-    //??
 
     const formData = {
       body: data.message,
@@ -50,7 +49,6 @@ export default function PostComment() {
       setComment(response.data);
       history(0);
     } catch (error) {
-      console.log("error", error);
       setCommentError(error.toString());
     } finally {
       setSubmitting(false);
@@ -58,21 +56,23 @@ export default function PostComment() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(Comment)}>
+    <Form
+      onSubmit={handleSubmit(Comment)}
+      className={styles.postCommentContainer}
+    >
       {comment && <div>Your comment was successful</div>}
       {commentError && <FormError>{commentError}</FormError>}
       <fieldset disabled={submitting}>
         <Form.Group className="mb-3" controlId="message">
-          <Form.Label>Comment</Form.Label>
           <Form.Control
             as="textarea"
             name="message"
-            rows={3}
+            placeholder="Write a comment..."
+            rows={1}
             {...register("message")}
           />
         </Form.Group>
         {errors.message && <FormError>{errors.message.message}</FormError>}
-
         <Button
           variant="primary"
           type="submit"

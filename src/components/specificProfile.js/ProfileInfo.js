@@ -33,22 +33,24 @@ export default function ProfileInfo() {
   if (profile.avatar === null) {
     profile.avatar = "";
   }
+
+  if (profile.banner === null) {
+    profile.banner =
+      "https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/7cf6c0d7de9c8a38729c02aff196e391?t=1664372891&webp_fallback=png";
+  }
   return (
     <div>
       <Image
         className={styles.banner}
         style={{
-          // backgroundColor: "linear-gradient(to left top, #d22f8c, #fc782e)",
-          // backgroundImage: "linear-gradient(to left top, #d22f8c, #fc782e)",
           backgroundImage: `url('${profile.banner}' )`,
-
           height: 200,
         }}
-        // onError={(event) => {
-        //   event.target.src =
-        //     "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
-        //   event.onerror = null;
-        // }}
+        onError={(event) => {
+          event.target.src =
+            "https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/7cf6c0d7de9c8a38729c02aff196e391?t=1664372891&webp_fallback=png";
+          event.onerror = null;
+        }}
       />
       <div className={styles.profileContainer}>
         <Image

@@ -13,7 +13,6 @@ import FormError from "../common/FormError";
 
 const nameRegex = /^[a-zA-Z0-9_]+$/;
 const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
-
 const url = BASE_URL + "social/auth/register";
 
 const schema = yup.object().shape({
@@ -51,14 +50,11 @@ export default function Signup(props) {
     setSignupError(null);
     setSubmitting(true);
 
-    console.log(data);
-
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
       return alert("Your signup was successful");
     } catch (error) {
-      console.log("error", error);
       setSignupError(error.toString());
       return alert("User already exists");
     } finally {

@@ -4,15 +4,17 @@ import useAxios from "../../hooks/useAxios";
 import styles from "./Post.module.css";
 import Heading from "../layout/Heading.js";
 import { Image } from "react-bootstrap";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function Post() {
-  const [author, setAuthor] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [author, setAuthor] = useState("");
   const [comments, setComments] = useState([]);
   const [reactions, setReactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   let { id } = useParams();
-
   const http = useAxios();
 
   useEffect(function () {
@@ -22,14 +24,16 @@ export default function Post() {
           `social/posts/${id}?_author=true&_comments=true&_reactions=true`
         );
         console.log("response", response);
+        document.title = `${response.data.author.name} - ${response.data.title}`;
 
-        setAuthor(response.data.author);
-        console.log(response.data.author);
         setPosts(response.data);
+        setAuthor(response.data.author);
         setComments(response.data.comments);
         setReactions(response.data.reactions);
       } catch (error) {
-        console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -37,79 +41,96 @@ export default function Post() {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <div className={styles.specificPostContainer}>
-      {/* <div className={styles.specificAuthorContainer}>
-        {posts.values(author).map((name) => {
-          return <div key={author.name}>{author.name}</div>;
-        })}
-      </div> */}
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-      {/* <div>
-        {author.map((user) => {
-          return <div key={user.name}>{user.name}</div>;
-        })}
-      </div> */}
-      <div className={styles.specificPostContent}>
-        <Image
-          src={posts.media}
-          alt={posts.title}
-          className={styles.specificPostImage}
-          onError={(event) => {
-            event.target.src =
-              "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
-            event.onerror = null;
-          }}
-        />
-        <div>
-          <Heading title={posts.title} />
-          {/* <Link to={`/profile/${posts.author.name}`}>{posts.author.name}</Link> */}
-          <div>
-            <p>{posts.body}</p>
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
+
+  if (posts.media === null) {
+    posts.media = "";
+  }
+
+  return (
+    <>
+      <div
+        style={{
+          backgroundImage: `url('${author.banner}' )`,
+          backgroundColor: "lightgray",
+          height: 200,
+        }}
+      ></div>
+      <div className={styles.specificPostContainer}>
+        <div className={styles.specificPostContent}>
+          <Image
+            src={posts.media}
+            alt={posts.title}
+            className={styles.specificPostImage}
+            onError={(event) => {
+              event.target.src =
+                "https://i.seadn.io/gae/OGpebYaykwlc8Tbk-oGxtxuv8HysLYKqw-FurtYql2UBd_q_-ENAwDY82PkbNB68aTkCINn6tOhpA8pF5SAewC2auZ_44Q77PcOo870?auto=format&w=1000";
+              event.onerror = null;
+            }}
+          />
+          <div className={styles.specificPostAuthor}>
+            <p>Visit profile: </p>
+            <Link
+              to={`/profile/${author.name}`}
+              className={styles.specificPostAuthorLink}
+            >
+              {author.name}
+            </Link>
           </div>
+          <Heading title={posts.title} />
+          <p className={styles.specificPostBody}>{posts.body}</p>
+        </div>
+        <div className={styles.specificReactionContainer}>
+          {reactions.map((reaction, index) => {
+            return (
+              <div key={index} className={styles.specificReactionContent}>
+                {reaction.symbol}
+                {reaction.count}
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.specificCommentContainer}>
+          <h4>Comments</h4>
+          {comments.map((comment) => {
+            if (comment.author.avatar === null) {
+              comment.author.avatar = "";
+            }
+
+            return (
+              <div key={comment.id}>
+                <Link
+                  to={`/profile/${comment.owner}`}
+                  className={styles.specificCommentLink}
+                >
+                  <Image
+                    roundedCircle
+                    src={comment.author.avatar}
+                    className={styles.specificCommentAvatar}
+                    onError={(event) => {
+                      event.target.src =
+                        "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
+                      event.onerror = null;
+                    }}
+                  ></Image>{" "}
+                  {comment.owner}
+                </Link>
+                : {comment.body}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className={styles.specificReactionContainer}>
-        {reactions.map((reaction) => {
-          return (
-            <div key={reaction.id} className={styles.specificReactionContent}>
-              {reaction.symbol}
-              {reaction.count}
-            </div>
-          );
-        })}
-        {/* reaction har ingen unique key jeg kan legge til. har bare count, symbol og postId. skal jeg bare slette hele key greien? */}
-      </div>
-      <div className={styles.specificCommentContainer}>
-        {comments.map((comment) => {
-          return (
-            <div key={comment.id}>
-              <Link
-                to={`/profile/${comment.owner}`}
-                className={styles.specificCommentLink}
-              >
-                <Image
-                  src={comment.author.avatar}
-                  className={styles.specificCommentAvatar}
-                  onError={(event) => {
-                    event.target.src =
-                      "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
-                    event.onerror = null;
-                  }}
-                ></Image>{" "}
-                {comment.owner}
-              </Link>
-              : {comment.body}
-            </div>
-          );
-        })}
-      </div>
-      {/* style emojiene fint */}
-      {/* <Tabs>
-        <Tab eventKey="comment" title="Comment">
-          <PostComment />
-        </Tab>
-      </Tabs> */}
-    </div>
+    </>
   );
 }

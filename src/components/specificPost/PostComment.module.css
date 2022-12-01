@@ -1,3 +1,9 @@
+.postCommentContainer {
+  max-width: 1100px;
+  margin: 0px auto;
+  width: 100%;
+}
+
 .postCommentButton {
   background: linear-gradient(to left top, #d22f8c, #fc782e);
   border: solid white;

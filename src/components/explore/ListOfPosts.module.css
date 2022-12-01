@@ -4,12 +4,6 @@
   gap: 20px;
 }
 
-@media (max-width: 768px) {
-  .listOfPostsContainer {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .listOfPostsContent {
   display: contents;
 }
@@ -34,8 +28,35 @@
   font-size: 100%;
 }
 
+.postListTitleContent {
+  display: flex;
+  align-items: center;
+}
+
+.postListTitleContent p {
+  margin: 0px 5px;
+}
+
+.postListTitleAvatar {
+  width: 30px;
+  height: 30px;
+}
+
 .postListIcons {
   margin-left: auto;
   gap: 10px;
   display: flex;
+  margin-top: 5px;
+}
+
+@media (max-width: 992px) {
+  .listOfPostsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .listOfPostsContainer {
+    grid-template-columns: 1fr;
+  }
 }

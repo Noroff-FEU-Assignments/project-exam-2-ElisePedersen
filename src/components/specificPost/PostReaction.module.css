@@ -1,3 +1,9 @@
+.postReactionContainer {
+  max-width: 1100px;
+  margin: 0px auto;
+  width: 100%;
+}
+
 .postReactionButton {
   background: linear-gradient(to left top, #d22f8c, #fc782e);
   border: solid white;
@@ -11,4 +17,11 @@
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   color: white;
+}
+
+@media (max-width: 768px) {
+  .postReactionContainer {
+    max-width: 200px;
+    margin: unset;
+  }
 }

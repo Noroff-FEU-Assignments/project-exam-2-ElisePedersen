@@ -78,7 +78,7 @@ export default function NewPost() {
             <Form.Label>Body</Form.Label>
             <Form.Control
               as="textarea"
-              rows={3}
+              rows={2}
               name="body"
               {...register("body")}
             />

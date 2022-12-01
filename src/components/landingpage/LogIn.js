@@ -21,7 +21,7 @@ const schema = yup.object().shape({
 export default function Login() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
-
+  const [, setAuth] = useContext(AuthContext);
   const history = useNavigate();
 
   const {
@@ -32,8 +32,6 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const [, setAuth] = useContext(AuthContext);
-
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
@@ -43,10 +41,7 @@ export default function Login() {
       console.log("response", response.data);
       setAuth(response.data);
       history("/explore");
-      document.body.style =
-        "background: linear-gradient(to left top, #d22f8c, #fc782e)";
     } catch (error) {
-      console.log("error", error);
       setLoginError(error.toString());
     } finally {
       setSubmitting(false);

@@ -7,7 +7,6 @@ import styles from "./Navigation.module.css";
 
 export default function Navigation() {
   const user = JSON.parse(localStorage.getItem("auth"));
-
   const location = useLocation();
 
   return (
@@ -18,7 +17,6 @@ export default function Navigation() {
         </NavLink>
         {location.pathname !== "/" ? (
           <NavLink
-            // to={`/user/:name`}
             to={`/user/${user.name}`}
             className={styles.navigationButton}
           >

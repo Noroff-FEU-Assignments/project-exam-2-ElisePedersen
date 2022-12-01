@@ -15,6 +15,7 @@ export default function Layout({ children }) {
       document.body.style = "background: #FFFFFF";
     }
   }, [location]);
+
   return (
     <>
       <Container className={styles.layoutContentContainer}>

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { React, useContext } from "react";
 
 export default function Logout() {
-  const [auth, setAuth] = useContext(AuthContext);
-  console.log(auth);
+  const [, setAuth] = useContext(AuthContext);
+
   const history = useNavigate();
 
   const logout = () => {
