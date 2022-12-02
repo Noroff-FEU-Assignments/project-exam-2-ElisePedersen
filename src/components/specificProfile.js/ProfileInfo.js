@@ -53,7 +53,6 @@ export default function ProfileInfo() {
       setFollowProfile(<ProfileUnfollow />);
     } catch (error) {
       setError(error.toString());
-      return alert("User already exists");
     }
   }
 
