@@ -6,12 +6,15 @@ import Image from "react-bootstrap/Image";
 import ProfileFollow from "./ProfileFollow";
 import ProfileUnfollow from "./ProfileUnfollow";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { useForm } from "react-hook-form";
 
 export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [followProfile, setFollowProfile] = useState([]);
+
+  const { handleSubmit } = useForm();
 
   let { name } = useParams();
   const http = useAxios();
@@ -43,6 +46,17 @@ export default function ProfileInfo() {
     );
   }
 
+  async function onSubmit(data) {
+    try {
+      const response = await http.put(`social/profiles/${name}/unfollow`);
+      console.log("response", response.data);
+      setFollowProfile(<ProfileUnfollow />);
+    } catch (error) {
+      setError(error.toString());
+      return alert("User already exists");
+    }
+  }
+
   if (error) {
     return <div>Ops, something went wrong</div>;
   }
@@ -50,11 +64,6 @@ export default function ProfileInfo() {
   if (profile.avatar === null) {
     profile.avatar = "";
   }
-  // const isFollowing = followers.map((follow) => {
-  //   return follow.name;
-  // });
-
-  // const iFollow = isFollowing.includes(auth.name);
 
   return (
     <div>
@@ -80,7 +89,10 @@ export default function ProfileInfo() {
         />
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
-          {followProfile ? <ProfileFollow /> : <ProfileUnfollow />}
+          <div onSubmit={handleSubmit(onSubmit)}>
+            {followProfile ? <ProfileUnfollow /> : <ProfileFollow />}
+          </div>
+
           {/* <ProfileFollow />
           <ProfileUnfollow /> */}
           {/* Bare vise en om gangen. i utgangspunktet må den jo være follow, også endre på useffect */}
