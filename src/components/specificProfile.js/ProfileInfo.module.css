@@ -1,11 +1,3 @@
-.banner {
-  width: 100%;
-  background-position-x: center;
-  background-position-y: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .profileContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,11 +8,6 @@
 .profileContainer img {
   width: 50%;
   margin-left: auto;
-}
-
-.avatar {
-  border-radius: 50%;
-  width: 100%;
 }
 
 .profileInfo {
@@ -50,3 +37,9 @@
   background-origin: padding-box, border-box;
   color: white;
 }
+
+/* @media (max-width: 579px) {
+  .profileContainer {
+    grid-template-columns: unset;
+  }
+} */

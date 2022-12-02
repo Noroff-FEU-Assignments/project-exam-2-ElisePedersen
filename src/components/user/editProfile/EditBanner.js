@@ -96,6 +96,8 @@ export default function EditBanner() {
           backgroundImage: `url('${banner.banner}' )`,
           backgroundColor: "lightgray",
           height: 200,
+          backgroundSize: "cover",
+          backgroundPositionY: "center",
         }}
       ></div>
 

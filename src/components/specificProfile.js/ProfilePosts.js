@@ -4,12 +4,14 @@ import useAxios from "../../hooks/useAxios";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./ProfilePosts.module.css";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function ProfilePosts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   let { name } = useParams();
-
   const http = useAxios();
 
   useEffect(function () {
@@ -19,13 +21,27 @@ export default function ProfilePosts() {
         console.log("response", response);
         setPosts(response.data);
       } catch (error) {
-        console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getProfilePosts();
     // eslint-disable-next-line
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
 
   return (
     <div>

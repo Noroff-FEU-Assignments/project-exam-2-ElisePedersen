@@ -45,6 +45,8 @@ export default function UserInformation() {
           backgroundImage: `url('${user.banner}' )`,
           backgroundColor: "lightgray",
           height: 200,
+          backgroundSize: "cover",
+          backgroundPositionY: "center",
         }}
       ></div>
       <div className={styles.userInfoContainer}>

@@ -16,13 +16,10 @@ export default function PostReaction() {
   const [reaction, setReaction] = useState();
   const [submitting, setSubmitting] = useState(false);
   const [reactionError, setReactionError] = useState(null);
-  const [emoji, setEmoji] = useState();
+  const [symbol, setSymbol] = useState();
 
   let { id } = useParams();
   const http = useAxios();
-  let symbol = emoji;
-  //skal denne fjernes? eller bruke symbol på emoji og setemoji?
-
   const history = useNavigate();
 
   const {
@@ -39,7 +36,6 @@ export default function PostReaction() {
       setReaction(response.data);
       history(0);
     } catch (error) {
-      console.log("error", error);
       setReactionError(error.toString());
     } finally {
       setSubmitting(false);
@@ -57,9 +53,9 @@ export default function PostReaction() {
         <Form.Group className="mb-3" controlId="symbol">
           <Form.Select
             aria-label="Default select example"
-            value={emoji}
+            value={symbol}
             {...register("symbol")}
-            onChange={(e) => setEmoji(e.target.value)}
+            onChange={(e) => setSymbol(e.target.value)}
           >
             <option value="">Select an emoji</option>
             <option>🤩</option>
@@ -69,7 +65,7 @@ export default function PostReaction() {
             <option>🧡</option>
           </Form.Select>
         </Form.Group>
-        {errors.message && <FormError>{errors.message.message}</FormError>}
+        {errors.symbol && <FormError>{errors.symbol.message}</FormError>}
         <Button
           variant="primary"
           type="submit"

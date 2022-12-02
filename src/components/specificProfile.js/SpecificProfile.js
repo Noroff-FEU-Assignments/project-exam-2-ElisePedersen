@@ -1,5 +1,4 @@
 import React from "react";
-
 import ProfilePosts from "./ProfilePosts";
 import ProfileInfo from "./ProfileInfo";
 
