@@ -46,7 +46,7 @@ export default function ProfileInfo() {
     );
   }
 
-  async function onSubmit(data) {
+  async function onSubmit() {
     try {
       const response = await http.put(`social/profiles/${name}/unfollow`);
       console.log("response", response.data);
@@ -89,7 +89,7 @@ export default function ProfileInfo() {
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
           <div onSubmit={handleSubmit(onSubmit)}>
-            {followProfile ? <ProfileUnfollow /> : <ProfileFollow />}
+            {followProfile ? <ProfileFollow /> : <ProfileUnfollow />}
           </div>
 
           {/* <ProfileFollow />
