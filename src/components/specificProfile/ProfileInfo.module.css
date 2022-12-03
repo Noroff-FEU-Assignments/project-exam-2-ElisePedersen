@@ -5,8 +5,10 @@
   gap: 20px;
 }
 
-.profileContainer img {
-  width: 50%;
+.profileAvatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   margin-left: auto;
   align-self: center;
 }
@@ -17,6 +19,7 @@
 
 .profileInfo h1 {
   text-transform: capitalize;
+  text-align: left;
 }
 
 .followButton {
@@ -47,7 +50,7 @@
     grid-template-columns: unset;
   }
 
-  .profileContainer img {
+  .profileAvatar {
     margin: 0px auto;
   }
 

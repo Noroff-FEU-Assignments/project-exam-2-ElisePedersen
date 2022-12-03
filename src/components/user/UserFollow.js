@@ -54,8 +54,9 @@ export default function UserFollowing() {
 
       <div className={styles.userFollowContainer}>
         {following.map((follow) => {
-          if (follow.avatar === null) {
-            follow.avatar = "";
+          if (follow.avatar === null || follow.avatar === "") {
+            follow.avatar =
+              "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
           }
           return (
             <div key={follow.name} className={styles.userFollowContent}>
@@ -64,17 +65,15 @@ export default function UserFollowing() {
                   to={`/profile/${follow.name}`}
                   className={styles.userFollowLink}
                 >
-                  <Card.Img
-                    variant="top"
-                    src={follow.avatar}
-                    alt={follow.name}
+                  <div
                     className={styles.userFollowImg}
-                    onError={(event) => {
-                      event.target.src =
-                        "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
-                      event.onerror = null;
+                    style={{
+                      backgroundImage: `url('${follow.avatar}' )`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPositionY: "center",
                     }}
-                  ></Card.Img>
+                  ></div>
                 </Link>
                 <Card.Body className={styles.userFollowBody}>
                   <Card.Title className={styles.userFollowTitle}>

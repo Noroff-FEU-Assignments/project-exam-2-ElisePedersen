@@ -80,7 +80,7 @@ export default function Signup(props) {
           {signupError && <FormError>Could not signup</FormError>}
           <fieldset disabled={submitting}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Username</Form.Label>
               <Form.Control name="name" type="text" {...register("name")} />
               {errors.name && <FormError>{errors.name.message}</FormError>}
             </Form.Group>

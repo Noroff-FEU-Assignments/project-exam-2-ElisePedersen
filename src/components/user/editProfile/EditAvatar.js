@@ -1,6 +1,6 @@
 import Heading from "../../layout/Heading";
 import { React, useState, useEffect } from "react";
-import { Button, Form, Image } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -97,25 +97,23 @@ export default function EditAvatar() {
     <>
       <Heading title="Edit avatar" />
       <div className={styles.editAvatarContainer}>
-        <Image
-          roundedCircle
-          src={avatar.avatar}
-          alt={avatar.avatar}
+        <div
           className={styles.editAvatarImage}
-          onError={(event) => {
-            event.target.src =
-              "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
-            event.onerror = null;
+          style={{
+            backgroundImage: `url('${avatar.avatar}' )`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPositionY: "center",
           }}
-        ></Image>
+        ></div>
         <Form
           onSubmit={handleSubmit(onSubmit)}
           className={styles.editAvatarForm}
         >
-          {updated && <div>The avatar was updated</div>}
-          {/* få in styles på diven over SUCCESS, og på alle andre success. eller redirect to user page */}
-
-          {updateError && <FormError>{updateError}</FormError>}
+          {updated}
+          {updateError && (
+            <FormError>Avatar must be a valid URL link</FormError>
+          )}
           <fieldset disabled={updatingAvatar}>
             <Form.Group className="mb-3" controlId="avatar">
               <Form.Label>Avatar url</Form.Label>
@@ -131,7 +129,7 @@ export default function EditAvatar() {
             <Button
               variant="primary"
               type="submit"
-              className={styles.changeProfileButton}
+              className={styles.editAvatarButton}
             >
               {updatingAvatar ? "Updating..." : "Update avatar"}
             </Button>

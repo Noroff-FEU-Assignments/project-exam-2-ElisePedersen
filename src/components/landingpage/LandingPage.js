@@ -7,7 +7,7 @@ import Signup from "./Signup";
 
 export default function LandingPage() {
   const [signupModalShow, setSignupModalShow] = useState(false);
-
+  document.title = "Share-ish";
   return (
     <div className={styles.landingpageContainer}>
       <img src={logo} alt="Logo" />

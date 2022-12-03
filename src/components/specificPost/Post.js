@@ -109,6 +109,7 @@ export default function Post() {
                   <Image
                     roundedCircle
                     src={comment.author.avatar}
+                    alt={comment.author.name}
                     className={styles.specificCommentAvatar}
                     onError={(event) => {
                       event.target.src =

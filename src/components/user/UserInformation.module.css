@@ -1,8 +1,3 @@
-.userInfoHeading {
-  text-transform: capitalize;
-  margin-bottom: 20px;
-}
-
 .userInfoContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,14 +5,21 @@
   gap: 40px;
 }
 
-.userInfoContainer img {
+.userInfoAvatar {
   border-radius: 50%;
-  width: 50%;
+  width: 200px;
+  height: 200px;
   justify-self: end;
 }
 
 .userInfoContent {
   align-self: center;
+}
+
+.userInfoContent h1 {
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .userInfoLink {
@@ -36,8 +38,9 @@
 
 .userInfoButton:hover {
   background-color: transparent;
-  text-decoration: none;
   color: black;
+  opacity: 0.6;
+  text-decoration: none;
 }
 
 @media (max-width: 575px) {
@@ -47,7 +50,7 @@
   .userInfoContainer {
     grid-template-columns: unset;
   }
-  .userInfoContainer img {
+  .userInfoAvatar {
     justify-self: center;
   }
 

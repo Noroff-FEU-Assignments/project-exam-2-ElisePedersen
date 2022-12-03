@@ -25,6 +25,11 @@
   font-weight: 500;
 }
 
+.specificPostAuthorLink:hover {
+  color: black;
+  opacity: 0.6;
+}
+
 .specificPostBody {
   max-width: 80%;
   margin: 0px auto;
@@ -56,6 +61,11 @@
   text-decoration: none;
   color: black;
   font-weight: 500;
+}
+
+.specificCommentLink:hover {
+  color: black;
+  opacity: 0.6;
 }
 
 .specificCommentAvatar {

@@ -10,13 +10,13 @@
   margin-top: 20px;
 }
 
-.changeProfileButton {
+.editBannerButton {
   background: linear-gradient(to left top, #d22f8c, #fc782e);
   border: solid white;
   color: white;
 }
 
-.changeProfileButton:hover {
+.editBannerButton:hover {
   border: solid transparent;
   background: linear-gradient(to left top, #d22f8c, #fc782e),
     linear-gradient(to left top, #d22f8c, #fc782e);

@@ -107,7 +107,7 @@ export default function EditPost() {
 
         <Form onSubmit={handleSubmit(onSubmit)} className={styles.editPostForm}>
           {updated && <div>The post was updated</div>}
-          {updateError && <FormError>{updateError}</FormError>}
+          {updateError && <FormError>Could not update post</FormError>}
           <fieldset disabled={updatingPost}>
             <Form.Group className="mb-3" controlId="image">
               <Form.Label>Image url:</Form.Label>

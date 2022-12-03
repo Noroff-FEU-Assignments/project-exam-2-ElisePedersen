@@ -5,6 +5,7 @@ import useAxios from "../../hooks/useAxios";
 import styles from "./UserInformation.module.css";
 import Logout from "./Logout";
 import LoadingSpinner from "../common/LoadingSpinner";
+import Heading from "../layout/Heading";
 
 export default function UserInformation() {
   const [user, setUser] = useState([]);
@@ -68,9 +69,17 @@ export default function UserInformation() {
         }}
       ></div>
       <div className={styles.userInfoContainer}>
-        <img src={user.avatar} alt={user.name}></img>
+        <div
+          className={styles.userInfoAvatar}
+          style={{
+            backgroundImage: `url('${user.avatar}' )`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPositionY: "center",
+          }}
+        ></div>
         <div className={styles.userInfoContent}>
-          <h1 className={styles.userInfoHeading}>{user.name}</h1>
+          <Heading title={user.name} />
           <div className={styles.userInfoLink}>
             <Link to={`/user/edit-banner/${user.name}`}>
               <Button className={styles.userInfoButton}>Change banner</Button>

@@ -46,14 +46,10 @@ export default function NewPost() {
       media: data.image,
     };
 
-    console.log(formData);
-
     try {
       const response = await http.post(`social/posts`, formData);
       console.log("response", response.data);
-      //return alert ("Post is published")
       document.title = `${response.data.name}`;
-
       history(`/user/${user.name}`);
     } catch (error) {
       setPostError(error.toString());
@@ -65,7 +61,7 @@ export default function NewPost() {
     <div className={styles.newPostContainer}>
       <Heading title="Create new post" />
       <Form onSubmit={handleSubmit(createPost)} className={styles.newPostForm}>
-        {postError && <FormError>{postError}</FormError>}
+        {postError && <FormError>Could not create new post</FormError>}
         <fieldset disabled={submitting}>
           <Form.Group className="mb-3" controlId="image">
             <Form.Label>Image url:</Form.Label>

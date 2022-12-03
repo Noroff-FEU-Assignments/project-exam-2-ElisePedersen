@@ -48,7 +48,6 @@ export default function UserImages() {
     <div>
       <div className={styles.userPostHeading}>
         <h2>Your images</h2>
-        {/* {count._count.posts} */}
         <Link to={`/user/new-post`}>
           <Button className={styles.userPostButton}>Create new post</Button>
         </Link>

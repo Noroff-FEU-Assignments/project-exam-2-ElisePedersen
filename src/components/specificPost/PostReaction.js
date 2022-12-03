@@ -48,7 +48,7 @@ export default function PostReaction() {
       className={styles.postReactionContainer}
     >
       {reaction && <div>Your emoji was successful</div>}
-      {reactionError && <FormError>{reactionError}</FormError>}
+      {reactionError && <FormError>Could not post emoji</FormError>}
       <fieldset disabled={submitting}>
         <Form.Group className="mb-3" controlId="symbol">
           <Form.Select

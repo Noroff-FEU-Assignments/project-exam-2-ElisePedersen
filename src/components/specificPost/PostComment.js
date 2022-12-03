@@ -61,7 +61,7 @@ export default function PostComment() {
       className={styles.postCommentContainer}
     >
       {comment && <div>Your comment was successful</div>}
-      {commentError && <FormError>{commentError}</FormError>}
+      {commentError && <FormError>Could not post comment</FormError>}
       <fieldset disabled={submitting}>
         <Form.Group className="mb-3" controlId="message">
           <Form.Control

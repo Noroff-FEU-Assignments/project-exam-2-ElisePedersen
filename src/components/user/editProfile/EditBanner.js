@@ -110,10 +110,9 @@ export default function EditBanner() {
       ></div>
 
       <Form onSubmit={handleSubmit(onSubmit)} className={styles.editBannerForm}>
-        {updated && <div>The banner was updated</div>}
-        {/* få in styles på diven over SUCCESS, og på alle andre success. eller redirect to user page */}
+        {updated}
 
-        {updateError && <FormError>{updateError}</FormError>}
+        {updateError && <FormError>Banner must be a valid URL link</FormError>}
         <fieldset disabled={updatingBanner}>
           <Form.Group className="mb-3" controlId="banner">
             <Form.Label>Banner url</Form.Label>
@@ -123,13 +122,13 @@ export default function EditBanner() {
               defaultValue={banner.banner}
               {...register("banner")}
             />
-            {errors.banner && <FormError>{errors.response.data}</FormError>}
+            {errors.banner && <FormError>{errors.banner.message}</FormError>}
           </Form.Group>
 
           <Button
             variant="primary"
             type="submit"
-            className={styles.changeProfileButton}
+            className={styles.editBannerButton}
           >
             {updatingBanner ? "Updating..." : "Update banner"}
           </Button>

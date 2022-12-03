@@ -7,7 +7,7 @@ function Heading({ title }) {
 }
 
 Heading.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default Heading;

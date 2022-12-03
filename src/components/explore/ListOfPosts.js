@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { Image } from "react-bootstrap";
 
 export default function ListOfPosts() {
   const [posts, setPosts] = useState([]);
@@ -22,6 +21,7 @@ export default function ListOfPosts() {
         const response = await http.get(
           "social/posts?_author=true&_comments=true&_reactions=true"
         );
+        console.log(response.data);
         setPosts(response.data);
       } catch (error) {
         setError(error.toString());
@@ -53,8 +53,9 @@ export default function ListOfPosts() {
           post.media = "";
         }
 
-        if (post.author.avatar === null) {
-          post.author.avatar = "";
+        if (post.author.avatar === null || post.author.avatar === "") {
+          post.author.avatar =
+            "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
         }
         return (
           <div key={post.id} className={styles.listOfPostsContent}>
@@ -78,16 +79,15 @@ export default function ListOfPosts() {
                 >
                   <Card.Title className={styles.postListTitle}>
                     <div className={styles.postListTitleContent}>
-                      <Image
-                        roundedCircle
-                        src={post.author.avatar}
+                      <div
                         className={styles.postListTitleAvatar}
-                        onError={(event) => {
-                          event.target.src =
-                            "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
-                          event.onerror = null;
+                        style={{
+                          backgroundImage: `url('${post.author.avatar}' )`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPositionY: "center",
                         }}
-                      ></Image>
+                      ></div>
                       <p>{post.author.name}</p>
                     </div>
 

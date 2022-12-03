@@ -2,11 +2,11 @@ import { React, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./ProfileInfo.module.css";
-import Image from "react-bootstrap/Image";
 import ProfileFollow from "./ProfileFollow";
 import ProfileUnfollow from "./ProfileUnfollow";
 import LoadingSpinner from "../common/LoadingSpinner";
 import AuthContext from "../../context/AuthContext";
+import Heading from "../layout/Heading";
 
 export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
@@ -62,8 +62,9 @@ export default function ProfileInfo() {
     return <div>Ops, something went wrong</div>;
   }
 
-  if (profile.avatar === null) {
-    profile.avatar = "";
+  if (profile.avatar === null || profile.avatar === "") {
+    profile.avatar =
+      "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
   }
 
   return (
@@ -78,19 +79,19 @@ export default function ProfileInfo() {
           backgroundPositionY: "center",
         }}
       ></div>
+
       <div className={styles.profileContainer}>
-        <Image
-          roundedCircle
-          src={profile.avatar}
-          alt={profile.name}
-          onError={(event) => {
-            event.target.src =
-              "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
-            event.onerror = null;
+        <div
+          className={styles.profileAvatar}
+          style={{
+            backgroundImage: `url('${profile.avatar}' )`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPositionY: "center",
           }}
-        />
+        ></div>
         <div className={styles.profileInfo}>
-          <h1>{profile.name}</h1>
+          <Heading title={profile.name} />
           {isFollowing ? (
             <ProfileUnfollow setIsFollowing={setIsFollowing} />
           ) : (
