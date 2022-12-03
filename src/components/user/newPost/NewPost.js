@@ -63,11 +63,17 @@ export default function NewPost() {
     }
   }
   return (
-    <>
+    <div className={styles.newPostContainer}>
       <Heading title="Create new post" />
-      <Form onSubmit={handleSubmit(createPost)}>
+      <Form onSubmit={handleSubmit(createPost)} className={styles.newPostForm}>
         {postError && <FormError>{postError}</FormError>}
         <fieldset disabled={submitting}>
+          <Form.Group className="mb-3" controlId="image">
+            <Form.Label>Image url:</Form.Label>
+            <Form.Control name="image" type="text" {...register("image")} />
+            {errors.image && <FormError>{errors.image.message}</FormError>}
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control name="title" type="text" {...register("title")} />
@@ -91,12 +97,6 @@ export default function NewPost() {
             {errors.tags && <FormError>{errors.tags.message}</FormError>}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="image">
-            <Form.Label>Image url:</Form.Label>
-            <Form.Control name="image" type="text" {...register("image")} />
-            {errors.image && <FormError>{errors.image.message}</FormError>}
-          </Form.Group>
-
           <Button
             variant="primary"
             type="submit"
@@ -106,6 +106,6 @@ export default function NewPost() {
           </Button>
         </fieldset>
       </Form>
-    </>
+    </div>
   );
 }

@@ -1,3 +1,17 @@
+.newPostContainer {
+  max-width: 700px;
+  margin: 0px auto;
+}
+
+.newPostForm {
+  border: solid thin #dee2e6;
+  border-radius: 0.375rem;
+  padding: 10px;
+  margin-top: 20px;
+  height: fit-content;
+  align-self: center;
+}
+
 .newPostButton {
   background: linear-gradient(to left top, #d22f8c, #fc782e);
   border: solid white;

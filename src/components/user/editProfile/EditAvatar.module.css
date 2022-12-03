@@ -10,9 +10,8 @@
 }
 
 .editAvatarImage {
-  border-radius: 50%;
-  height: 300px;
-  width: 300px;
+  width: 200px;
+  margin-bottom: 20px;
   display: grid;
   justify-self: center;
 }

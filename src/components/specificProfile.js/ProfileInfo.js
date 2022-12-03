@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./ProfileInfo.module.css";
@@ -7,6 +7,8 @@ import ProfileFollow from "./ProfileFollow";
 import ProfileUnfollow from "./ProfileUnfollow";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { useForm } from "react-hook-form";
+import { Button, Form } from "react-bootstrap";
+import AuthContext from "../../context/AuthContext";
 
 export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
@@ -14,7 +16,8 @@ export default function ProfileInfo() {
   const [error, setError] = useState(null);
   const [followProfile, setFollowProfile] = useState([]);
 
-  const { handleSubmit } = useForm();
+  const [auth] = useContext(AuthContext);
+  // const { handleSubmit } = useForm();
 
   let { name } = useParams();
   const http = useAxios();
@@ -22,11 +25,14 @@ export default function ProfileInfo() {
   useEffect(function () {
     async function getProfile() {
       try {
-        const response = await http.get(`social/profiles/${name}`);
+        const response = await http.get(
+          `social/profiles/${name}?_following=true&_followers=true`
+        );
         console.log("response", response);
         setProfile(response.data);
         document.title = `${response.data.name}`;
-        setFollowProfile(<ProfileFollow />);
+        setFollowProfile(response.data.followers);
+        console.log(response.data.followers);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -38,22 +44,23 @@ export default function ProfileInfo() {
     // eslint-disable-next-line
   }, []);
 
+  async function FollowingToggle() {
+    followProfile.map((follow) => {
+      if (follow.name === auth.name) {
+        <ProfileUnfollow />;
+      } else {
+        <ProfileFollow />;
+      }
+      return <></>;
+    });
+  }
+
   if (loading) {
     return (
       <div>
         <LoadingSpinner />
       </div>
     );
-  }
-
-  async function onSubmit() {
-    try {
-      const response = await http.put(`social/profiles/${name}/unfollow`);
-      console.log("response", response.data);
-      setFollowProfile(<ProfileUnfollow />);
-    } catch (error) {
-      setError(error.toString());
-    }
   }
 
   if (error) {
@@ -88,9 +95,7 @@ export default function ProfileInfo() {
         />
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
-          <div onSubmit={handleSubmit(onSubmit)}>
-            {followProfile ? <ProfileFollow /> : <ProfileUnfollow />}
-          </div>
+          <ProfileFollow onClick={FollowingToggle} />
 
           {/* <ProfileFollow />
           <ProfileUnfollow /> */}

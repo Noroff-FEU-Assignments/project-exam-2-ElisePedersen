@@ -16,7 +16,7 @@ export default function ProfileFollow() {
     }
   }
   return (
-    <Button onClick={Follow} className="cta">
+    <Button variant="primary" type="submit" onClick={Follow}>
       Follow profile
     </Button>
   );

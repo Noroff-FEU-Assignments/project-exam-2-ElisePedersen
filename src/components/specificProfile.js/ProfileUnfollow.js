@@ -16,7 +16,7 @@ export default function ProfileUnfollow() {
     }
   }
   return (
-    <Button onClick={Unfollow} className="cta-secondary delete">
+    <Button variant="primary" type="submit" onClick={Unfollow}>
       Unfollow profile
     </Button>
   );

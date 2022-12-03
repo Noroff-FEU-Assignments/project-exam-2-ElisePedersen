@@ -59,15 +59,6 @@ export default function Post() {
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url('${author.banner}' )`,
-          backgroundColor: "lightgray",
-          height: 200,
-          backgroundSize: "cover",
-          backgroundPositionY: "center",
-        }}
-      ></div>
       <div className={styles.specificPostContainer}>
         <div className={styles.specificPostContent}>
           <Image

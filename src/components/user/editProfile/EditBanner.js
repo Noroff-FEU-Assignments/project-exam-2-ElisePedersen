@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import FormError from "../../common/FormError";
 import useAxios from "../../../hooks/useAxios";
 import styles from "./EditBanner.module.css";
+import LoadingSpinner from "../../common/LoadingSpinner";
 
 const schema = yup.object().shape({
   banner: yup.string(),
@@ -84,11 +85,17 @@ export default function EditBanner() {
     }
   }
 
-  if (fetchingBanner) return <div>Loading...</div>;
+  if (fetchingBanner) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-  if (fetchError) return <div>Error loading avatar</div>;
+  if (fetchError) return <div>Error loading banner</div>;
   return (
-    <>
+    <div className={styles.editBannerContainer}>
       <Heading title="Edit banner" />
 
       <div
@@ -127,6 +134,6 @@ export default function EditBanner() {
           </Button>
         </fieldset>
       </Form>
-    </>
+    </div>
   );
 }

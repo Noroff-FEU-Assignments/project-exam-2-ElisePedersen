@@ -8,13 +8,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import FormError from "../../common/FormError";
 import useAxios from "../../../hooks/useAxios";
 import styles from "./EditAvatar.module.css";
+import LoadingSpinner from "../../common/LoadingSpinner";
 
 const schema = yup.object().shape({
   avatar: yup.string(),
 });
 
 export default function EditAvatar() {
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState();
   const [updated, setUpdated] = useState(false);
   const [fetchingAvatar, setFetchingAvatar] = useState(true);
   const [updatingAvatar, setUpdatingAvatar] = useState(false);
@@ -45,8 +46,9 @@ export default function EditAvatar() {
 
         document.title = `Edit avatar - ${response.data.name}`;
 
-        if (response.data.avatar === null) {
-          response.data.avatar = "";
+        if (response.data.avatar === null || response.data.avatar === "") {
+          response.data.avatar =
+            "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
         }
         setAvatar(response.data);
       } catch (error) {
@@ -83,7 +85,13 @@ export default function EditAvatar() {
     }
   }
 
-  if (fetchingAvatar) return <div>Loading...</div>;
+  if (fetchingAvatar) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   if (fetchError) return <div>Error loading avatar</div>;
 
@@ -92,9 +100,15 @@ export default function EditAvatar() {
       <Heading title="Edit avatar" />
       <div className={styles.editAvatarContainer}>
         <Image
+          roundedCircle
           src={avatar.avatar}
           alt={avatar.avatar}
           className={styles.editAvatarImage}
+          onError={(event) => {
+            event.target.src =
+              "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
+            event.onerror = null;
+          }}
         ></Image>
         <Form
           onSubmit={handleSubmit(onSubmit)}

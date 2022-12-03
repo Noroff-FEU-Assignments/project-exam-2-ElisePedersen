@@ -1,0 +1,14 @@
+.logoutButton {
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  color: black;
+  text-decoration: underline;
+  padding: 0px;
+}
+
+.logoutButton:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+}

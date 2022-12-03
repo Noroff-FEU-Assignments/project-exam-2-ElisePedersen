@@ -7,9 +7,13 @@ function Footer() {
   const user = JSON.parse(localStorage.getItem("auth"));
   const [, setAuth] = useContext(AuthContext);
 
-  const logout = () => {
-    setAuth(null);
-  };
+  function logoutProfile() {
+    const confirmDelete = window.confirm("Are you sure you want to logout?");
+
+    if (confirmDelete) {
+      setAuth(null);
+    }
+  }
 
   return (
     <div className={styles.footer}>
@@ -22,7 +26,7 @@ function Footer() {
       <Link to={`/user/${user.name}`} className={styles.footerLink}>
         Profile
       </Link>
-      <Link to={`/`} onClick={logout} className={styles.footerLink}>
+      <Link to={`/`} onClick={logoutProfile} className={styles.footerLink}>
         Logout
       </Link>
     </div>

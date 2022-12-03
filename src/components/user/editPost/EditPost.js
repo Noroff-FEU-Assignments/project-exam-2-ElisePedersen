@@ -9,6 +9,7 @@ import FormError from "../../common/FormError";
 import useAxios from "../../../hooks/useAxios";
 import { Button, Form, Image } from "react-bootstrap";
 import styles from "./EditPost.module.css";
+import LoadingSpinner from "../../common/LoadingSpinner";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please insert a title"),
@@ -57,6 +58,18 @@ export default function EditPost() {
     // eslint-disable-next-line
   }, []);
 
+  if (fetchingPost) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (fetchError) {
+    return <div>Ops, something went wrong</div>;
+  }
+
   async function onSubmit(data) {
     setUpdatingPost(true);
     setUpdateError(null);
@@ -91,9 +104,8 @@ export default function EditPost() {
       <Heading title="Edit post" />
       <div className={styles.editPostContainer}>
         <div className={styles.editPostContent}>
-          <h2>{edit.title}</h2>
           <Image src={edit.media} alt={edit.title}></Image>
-
+          <h2>{edit.title}</h2>
           <p>{edit.body}</p>
         </div>
 
@@ -101,6 +113,19 @@ export default function EditPost() {
           {updated && <div>The post was updated</div>}
           {updateError && <FormError>{updateError}</FormError>}
           <fieldset disabled={updatingPost}>
+            <Form.Group className="mb-3" controlId="image">
+              <Form.Label>Image url:</Form.Label>
+              <Form.Control
+                // as="textarea"
+                // rows={3}
+                name="image"
+                type="text"
+                defaultValue={edit.media}
+                {...register("image")}
+              />
+              {errors.image && <FormError>{errors.image.message}</FormError>}
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -133,19 +158,6 @@ export default function EditPost() {
                 {...register("tags")}
               />
               {errors.tags && <FormError>{errors.tags.message}</FormError>}
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="image">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                // as="textarea"
-                // rows={3}
-                name="image"
-                type="text"
-                defaultValue={edit.media}
-                {...register("image")}
-              />
-              {errors.image && <FormError>{errors.image.message}</FormError>}
             </Form.Group>
 
             <Button
