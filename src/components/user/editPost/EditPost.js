@@ -95,10 +95,6 @@ export default function EditPost() {
     }
   }
 
-  if (fetchingPost) return <div>Loading...</div>;
-
-  if (fetchError) return <div>Error loading post</div>;
-
   return (
     <>
       <Heading title="Edit post" />

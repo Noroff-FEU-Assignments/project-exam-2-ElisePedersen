@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./ProfileUnfollow.module.css";
 
 export default function ProfileUnfollow({ setIsFollowing }) {
-  let { name } = useParams();
+  const [error, setError] = useState(null);
 
+  let { name } = useParams();
   const http = useAxios();
 
   async function Unfollow() {
@@ -14,9 +16,14 @@ export default function ProfileUnfollow({ setIsFollowing }) {
       console.log(response);
       setIsFollowing(false);
     } catch (error) {
-      console.log(error);
+      setError(error.toString());
     }
   }
+
+  if (error) {
+    return <div>Could not unfollow profile</div>;
+  }
+
   return (
     <Button
       variant="primary"

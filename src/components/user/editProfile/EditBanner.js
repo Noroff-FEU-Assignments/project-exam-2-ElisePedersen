@@ -52,7 +52,6 @@ export default function EditBanner() {
 
         setBanner(response.data);
       } catch (error) {
-        console.log(error.response.data.status);
         setFetchError(error.toString());
       } finally {
         setFetchingBanner(false);
@@ -94,6 +93,7 @@ export default function EditBanner() {
   }
 
   if (fetchError) return <div>Error loading banner</div>;
+
   return (
     <div className={styles.editBannerContainer}>
       <Heading title="Edit banner" />

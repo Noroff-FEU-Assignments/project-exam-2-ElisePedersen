@@ -1,24 +1,12 @@
 .userFollowContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-}
-
-@media (max-width: 991px) {
-  .userFollowContainer {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 560px) {
-  .userFollowContainer {
-    grid-template-columns: unset;
-  }
 }
 
 .userFollowHeading {
   text-align: center;
-  margin: 50px;
+  margin: 50px auto;
 }
 
 .userFollowContent {
@@ -55,4 +43,22 @@
 
 .userFollowTitle {
   font-size: 100%;
+}
+
+@media (max-width: 991px) {
+  .userFollowContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .userFollowContainer {
+    grid-template-columns: unset;
+  }
+}
+
+@media (max-width: 400px) {
+  .userFollowHeading {
+    margin: 30px auto;
+  }
 }

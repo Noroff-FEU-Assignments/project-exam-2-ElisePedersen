@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Button, Card } from "react-bootstrap";
 import styles from "./UserImages.module.css";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function UserImages() {
   const [posts, setImages] = useState([]);
-  // const [count, setCount] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   let { name } = useParams();
-
   const http = useAxios();
 
   useEffect(function () {
@@ -20,15 +21,28 @@ export default function UserImages() {
         );
         console.log("response", response.data);
         setImages(response.data.posts);
-        // setCount(response.data);
       } catch (error) {
-        console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getUserImages();
     // eslint-disable-next-line
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
 
   return (
     <div>

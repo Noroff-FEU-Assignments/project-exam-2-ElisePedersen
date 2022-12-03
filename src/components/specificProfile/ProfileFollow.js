@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./ProfileFollow.module.css";
 
 export default function ProfileFollow({ setIsFollowing }) {
-  let { name } = useParams();
+  const [error, setError] = useState(null);
 
+  let { name } = useParams();
   const http = useAxios();
 
   async function Follow() {
@@ -14,9 +16,14 @@ export default function ProfileFollow({ setIsFollowing }) {
       console.log(response);
       setIsFollowing(true);
     } catch (error) {
-      console.log(error);
+      setError(error.toString());
     }
   }
+
+  if (error) {
+    return <div>Could not follow profile</div>;
+  }
+
   return (
     <Button
       variant="primary"

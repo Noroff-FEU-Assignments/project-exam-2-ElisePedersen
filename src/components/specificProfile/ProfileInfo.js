@@ -12,7 +12,7 @@ export default function ProfileInfo() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [followProfile, setFollowProfile] = useState([]);
+  const [, setFollowProfile] = useState([]);
   const [isFollowing, setIsFollowing] = useState([]);
 
   const [auth] = useContext(AuthContext);

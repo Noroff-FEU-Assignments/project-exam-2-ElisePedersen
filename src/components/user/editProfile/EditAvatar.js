@@ -70,8 +70,6 @@ export default function EditAvatar() {
     setUpdateError(null);
     setUpdated(false);
 
-    console.log(data);
-
     try {
       const response = await http.put(avatarUrl, data);
       console.log("response", response.data);

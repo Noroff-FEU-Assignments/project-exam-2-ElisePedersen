@@ -56,8 +56,7 @@ export default function NewPost() {
 
       history(`/user/${user.name}`);
     } catch (error) {
-      console.log("error", error);
-      setPostError(error.response.data.status);
+      setPostError(error.toString());
     } finally {
       setSubmitting(false);
     }

@@ -3,13 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Card } from "react-bootstrap";
 import styles from "./UserFollow.module.css";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function UserFollowing() {
   const [following, setFollowing] = useState([]);
   const [count, setCount] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   let { name } = useParams();
-
   const http = useAxios();
 
   useEffect(function () {
@@ -21,16 +23,28 @@ export default function UserFollowing() {
         console.log("response", response.data);
         setFollowing(response.data.following);
         setCount(response.data._count.following.toString());
-        console.log(response.data._count.following);
       } catch (error) {
-        console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getUserFollowing();
     // eslint-disable-next-line
   }, []);
-  console.log(count);
+
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
 
   return (
     <div>

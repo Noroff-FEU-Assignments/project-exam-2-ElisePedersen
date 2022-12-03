@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./DeletePost.module.css";
 
 export default function DeletePost() {
-  const [, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   const user = JSON.parse(localStorage.getItem("auth"));
   const { id } = useParams();
@@ -26,6 +26,10 @@ export default function DeletePost() {
         setError(error.toString());
       }
     }
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
   }
 
   return (

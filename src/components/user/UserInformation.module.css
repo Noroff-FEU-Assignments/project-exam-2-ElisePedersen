@@ -6,14 +6,8 @@
 .userInfoContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 50px;
+  margin: 50px auto;
   gap: 40px;
-}
-
-@media (max-width: 767px) {
-  .userInfoContainer {
-    grid-template-columns: unset;
-  }
 }
 
 .userInfoContainer img {
@@ -22,26 +16,8 @@
   justify-self: end;
 }
 
-@media (max-width: 767px) {
-  .userInfoContainer img {
-    justify-self: center;
-  }
-}
-
-@media (max-width: 350px) {
-  .userInfoContainer img {
-    width: 100%;
-  }
-}
-
 .userInfoContent {
   align-self: center;
-}
-
-@media (max-width: 767px) {
-  .userInfoContent {
-    text-align: center;
-  }
 }
 
 .userInfoLink {
@@ -67,5 +43,21 @@
 @media (max-width: 575px) {
   .userInfoBanner {
     height: 100px !important;
+  }
+  .userInfoContainer {
+    grid-template-columns: unset;
+  }
+  .userInfoContainer img {
+    justify-self: center;
+  }
+
+  .userInfoContent {
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .userInfoContainer {
+    margin: 30px auto;
   }
 }

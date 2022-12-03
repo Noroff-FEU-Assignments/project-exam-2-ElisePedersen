@@ -4,9 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import styles from "./UserInformation.module.css";
 import Logout from "./Logout";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 export default function UserInformation() {
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   let { name } = useParams();
 
@@ -30,13 +33,27 @@ export default function UserInformation() {
         //     "https://cdn.pixabay.com/photo/2016/10/04/17/12/banner-1714905__340.jpg";
         // }
       } catch (error) {
-        console.log(error.response.data.status);
+        setError(error.toString());
+      } finally {
+        setLoading(false);
       }
     }
 
     getUser();
     // eslint-disable-next-line
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Ops, something went wrong</div>;
+  }
 
   return (
     <div>
