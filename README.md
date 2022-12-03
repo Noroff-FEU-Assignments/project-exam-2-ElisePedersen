@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Share-ish
+This is my submission for the second project exam at Noroff. This project only covers the front-end application for the API. The API I have used can be found under Social EndPoints in the [Noroff API documentation](https://noroff-api-docs.netlify.app/). 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Share-ish is a social media application where photosharing is the main focus. A registered user can login and create posts containing images, text and tags. The user can also edit the posts subsequently or delete them completely. The application is social in a way where the users can interact with others through commenting posts and reacting with emojis. They can also visit other profiles and follow/unfollow these. On the profile page the user can edit their avatar and banner for a more personalized feel.  
 
-## Available Scripts
+### Frameworks and Libraries
 
-In the project directory, you can run:
+- React
+- React Bootstrap
+- CSS Modules
+- Yup and react-hook-form
+- Axios
+- Font Awesome
+- Google Fonts
 
-### `npm start`
+### Hosting Services
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Netlify
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation and Setup
+To run the project locally, clone this repository to your computer. Make sure you have node and npm installed. Open a terminal in the proejct:
 
-### `npm test`
+- run `npm install` 
+- run `npm start` 
+ 
+This will open a webbrowser and run the application in developer mode locally on your computer. Normally the application starts on `port 3000` if it is not already in use - press `Y` to open on another port. This page will reload when you save any changes. You can also see any errors in the terminal and console. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Register
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To login, you need to register a new profile. The username must not include space or any punctuation marks except`_`. The email must be a `@stud.noroff.no` or `@noroff.no` email address. The password must be at least 8 characters. 
