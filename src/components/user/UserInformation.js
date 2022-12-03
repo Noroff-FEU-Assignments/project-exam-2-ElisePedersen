@@ -41,10 +41,11 @@ export default function UserInformation() {
   return (
     <div>
       <div
+        className={styles.userInfoBanner}
         style={{
           backgroundImage: `url('${user.banner}' )`,
           backgroundColor: "lightgray",
-          height: 200,
+          height: 150,
           backgroundSize: "cover",
           backgroundPositionY: "center",
         }}

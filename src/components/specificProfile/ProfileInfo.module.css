@@ -1,17 +1,35 @@
 .profileContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 20px auto;
+  margin: 50px auto;
   gap: 20px;
 }
 
+@media (max-width: 575px) {
+  .profileBanner {
+    height: 100px !important;
+  }
+
+  .profileContainer {
+    grid-template-columns: unset;
+  }
+
+  .profileContainer img {
+    margin: 0px auto;
+  }
+
+  .profileInfo {
+    margin: 0px auto;
+    text-align: center;
+  }
+}
 .profileContainer img {
   width: 50%;
   margin-left: auto;
+  align-self: center;
 }
 
 .profileInfo {
-  grid-column: 2;
   align-self: center;
 }
 

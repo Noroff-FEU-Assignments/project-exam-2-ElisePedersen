@@ -6,7 +6,7 @@ import styles from "./UserFollow.module.css";
 
 export default function UserFollowing() {
   const [following, setFollowing] = useState([]);
-  // const [count, setCount] = useState(null);
+  const [count, setCount] = useState([]);
 
   let { name } = useParams();
 
@@ -20,8 +20,8 @@ export default function UserFollowing() {
         );
         console.log("response", response.data);
         setFollowing(response.data.following);
-        // setCount(response.data._count.following.toString());
-        // console.log(response.data._count.following);
+        setCount(response.data._count.following.toString());
+        console.log(response.data._count.following);
       } catch (error) {
         console.log(error.response.data.status);
       }
@@ -30,12 +30,13 @@ export default function UserFollowing() {
     getUserFollowing();
     // eslint-disable-next-line
   }, []);
-  // console.log(count._count.following);
+  console.log(count);
 
   return (
     <div>
-      <h2 className={styles.userFollowHeading}>Profiles you follow</h2>
-      {/* {count._count} */}
+      <h2 className={styles.userFollowHeading}>
+        Profiles you follow - {count}
+      </h2>
 
       <div className={styles.userFollowContainer}>
         {following.map((follow) => {
@@ -56,7 +57,7 @@ export default function UserFollowing() {
                     className={styles.userFollowImg}
                     onError={(event) => {
                       event.target.src =
-                        "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?b=1&s=612x612&w=0&k=20&c=IATS1wxpkvh5kuoXceZ40B1UZEDCyfvV93saUjU_mvE=";
+                        "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
                       event.onerror = null;
                     }}
                   ></Card.Img>

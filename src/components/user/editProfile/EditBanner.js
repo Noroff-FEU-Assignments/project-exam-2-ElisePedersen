@@ -99,10 +99,11 @@ export default function EditBanner() {
       <Heading title="Edit banner" />
 
       <div
+        className={styles.editBannerImage}
         style={{
           backgroundImage: `url('${banner.banner}' )`,
           backgroundColor: "lightgray",
-          height: 200,
+          height: 150,
           backgroundSize: "cover",
           backgroundPositionY: "center",
         }}
@@ -122,7 +123,7 @@ export default function EditBanner() {
               defaultValue={banner.banner}
               {...register("banner")}
             />
-            {errors.banner && <FormError>{errors.banner.message}</FormError>}
+            {errors.banner && <FormError>{errors.response.data}</FormError>}
           </Form.Group>
 
           <Button

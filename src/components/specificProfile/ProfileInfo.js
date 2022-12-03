@@ -6,8 +6,6 @@ import Image from "react-bootstrap/Image";
 import ProfileFollow from "./ProfileFollow";
 import ProfileUnfollow from "./ProfileUnfollow";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { useForm } from "react-hook-form";
-import { Button, Form } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 
 export default function ProfileInfo() {
@@ -15,9 +13,9 @@ export default function ProfileInfo() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [followProfile, setFollowProfile] = useState([]);
+  const [isFollowing, setIsFollowing] = useState([]);
 
   const [auth] = useContext(AuthContext);
-  // const { handleSubmit } = useForm();
 
   let { name } = useParams();
   const http = useAxios();
@@ -32,7 +30,7 @@ export default function ProfileInfo() {
         setProfile(response.data);
         document.title = `${response.data.name}`;
         setFollowProfile(response.data.followers);
-        console.log(response.data.followers);
+        checkIfFollowing(response.data.followers);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -44,15 +42,12 @@ export default function ProfileInfo() {
     // eslint-disable-next-line
   }, []);
 
-  async function FollowingToggle() {
-    followProfile.map((follow) => {
-      if (follow.name === auth.name) {
-        <ProfileUnfollow />;
-      } else {
-        <ProfileFollow />;
-      }
-      return <></>;
-    });
+  function checkIfFollowing(followers) {
+    if (followers.some((profile) => profile.name === auth.name)) {
+      setIsFollowing(true);
+    } else {
+      setIsFollowing(false);
+    }
   }
 
   if (loading) {
@@ -74,10 +69,11 @@ export default function ProfileInfo() {
   return (
     <div>
       <div
+        className={styles.profileBanner}
         style={{
           backgroundImage: `url('${profile.banner}' )`,
           backgroundColor: "lightgray",
-          height: 200,
+          height: 150,
           backgroundSize: "cover",
           backgroundPositionY: "center",
         }}
@@ -95,12 +91,11 @@ export default function ProfileInfo() {
         />
         <div className={styles.profileInfo}>
           <h1>{profile.name}</h1>
-          <ProfileFollow onClick={FollowingToggle} />
-
-          {/* <ProfileFollow />
-          <ProfileUnfollow /> */}
-          {/* Bare vise en om gangen. i utgangspunktet må den jo være follow, også endre på useffect */}
-          {/* {following ? <ProfileFollow /> : <ProfileUnfollow />} */}
+          {isFollowing ? (
+            <ProfileUnfollow setIsFollowing={setIsFollowing} />
+          ) : (
+            <ProfileFollow setIsFollowing={setIsFollowing} />
+          )}
         </div>
       </div>
     </div>

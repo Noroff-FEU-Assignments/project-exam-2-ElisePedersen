@@ -63,3 +63,9 @@
   text-decoration: none;
   color: black;
 }
+
+@media (max-width: 575px) {
+  .userInfoBanner {
+    height: 100px !important;
+  }
+}
