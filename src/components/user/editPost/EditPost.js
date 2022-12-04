@@ -121,7 +121,7 @@ export default function EditPost() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="title">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Caption</Form.Label>
               <Form.Control
                 name="title"
                 type="text"
@@ -132,7 +132,7 @@ export default function EditPost() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="body">
-              <Form.Label>Body</Form.Label>
+              <Form.Label>Text</Form.Label>
               <Form.Control
                 as="textarea"
                 name="body"

@@ -69,13 +69,13 @@ export default function NewPost() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="title">
-            <Form.Label>Title</Form.Label>
+            <Form.Label>Caption</Form.Label>
             <Form.Control name="title" type="text" {...register("title")} />
             {errors.title && <FormError>{errors.title.message}</FormError>}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="body">
-            <Form.Label>Body</Form.Label>
+            <Form.Label>Text</Form.Label>
             <Form.Control
               as="textarea"
               rows={2}
