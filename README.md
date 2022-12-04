@@ -29,3 +29,13 @@ This will open a webbrowser and run the application in developer mode locally on
 ### Register
 
 To login, you need to register a new profile. The username must not include space or any punctuation marks except`_`. The email must be a `@stud.noroff.no` or `@noroff.no` email address. The password must be at least 8 characters. 
+
+## Reflection
+
+This application was created in the timespan of 7 weeks. During these weeks I have planned, designed and built the website. I have used a kanban project board for a day to day planning and Gantt chart for big picture project timing. For the style tile and prototyping I have used Adobe XD. Both the planning and design part went very smooth, with no challenges. Over these 2 years of studies I have learned that planning the process helps with time management and also remembering all the details of the project. In addition to this, a good prototype makes building the website more efficient. 
+
+When it comes to building the website, I first made sure I was able to make the API calls that I needed. This is a larger API than I have used before, therefore I had some errors along the way. I used the dev tools to understand the errors, and through that was able to make everything work. Then, I started implementing the react-bootstrap components to display the content on the pages. Finally, I used CSS modules to style the content inline with the style tile and prototype. Throughout the project I have facilitated user testing and made changes based on the feedback.   
+
+Lastly, I think the exam has been fun and challenging. I have had some issues, learned something new and gained more knowledge about how everything works. 
+
+Welcome to Share-ish! 
