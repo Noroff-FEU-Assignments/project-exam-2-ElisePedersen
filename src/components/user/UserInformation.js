@@ -22,17 +22,14 @@ export default function UserInformation() {
         const response = await http.get(`social/profiles/${name}`);
         console.log("response", response.data);
         setUser(response.data);
-        document.title = `${response.data.name}`;
-
         if (response.data.avatar === null || response.data.avatar === "") {
           response.data.avatar =
             "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
         }
 
-        // if (response.data.banner === null || response.data.banner === "") {
-        //   response.data.banner =
-        //     "https://cdn.pixabay.com/photo/2016/10/04/17/12/banner-1714905__340.jpg";
-        // }
+        if (response.data.banner === null) {
+          response.data.banner = "";
+        }
       } catch (error) {
         setError(error.toString());
       } finally {

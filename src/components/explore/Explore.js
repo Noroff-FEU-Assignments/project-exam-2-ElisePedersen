@@ -1,5 +1,4 @@
 import React from "react";
-
 import Heading from "../layout/Heading";
 import ListOfPosts from "./ListOfPosts";
 

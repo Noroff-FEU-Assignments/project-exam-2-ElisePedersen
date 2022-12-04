@@ -24,7 +24,6 @@ export default function Post() {
           `social/posts/${id}?_author=true&_comments=true&_reactions=true`
         );
         console.log("response", response);
-        document.title = `${response.data.author.name} - ${response.data.title}`;
 
         setPosts(response.data);
         setAuthor(response.data.author);
@@ -72,7 +71,7 @@ export default function Post() {
             }}
           />
           <div className={styles.specificPostAuthor}>
-            <p>Visit profile: </p>
+            <p>Visit profile:</p>
             <Link
               to={`/profile/${author.name}`}
               className={styles.specificPostAuthorLink}

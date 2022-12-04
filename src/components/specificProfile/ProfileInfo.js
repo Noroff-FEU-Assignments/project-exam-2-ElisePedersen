@@ -28,7 +28,6 @@ export default function ProfileInfo() {
         );
         console.log("response", response);
         setProfile(response.data);
-        document.title = `${response.data.name}`;
         setFollowProfile(response.data.followers);
         checkIfFollowing(response.data.followers);
       } catch (error) {

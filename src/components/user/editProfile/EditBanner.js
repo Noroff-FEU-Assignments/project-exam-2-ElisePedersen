@@ -44,8 +44,6 @@ export default function EditBanner() {
         const response = await http.get(url);
         console.log("response", response.data);
 
-        document.title = `Edit banner - ${response.data.name}`;
-
         if (response.data.banner === null) {
           response.data.banner = "";
         }

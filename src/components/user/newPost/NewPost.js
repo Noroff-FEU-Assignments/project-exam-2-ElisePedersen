@@ -49,7 +49,6 @@ export default function NewPost() {
     try {
       const response = await http.post(`social/posts`, formData);
       console.log("response", response.data);
-      document.title = `${response.data.name}`;
       history(`/user/${user.name}`);
     } catch (error) {
       setPostError(error.toString());

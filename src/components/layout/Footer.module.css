@@ -15,3 +15,9 @@
   font-size: 105%;
   color: white;
 }
+
+@media (max-width: 375px) {
+  .footer {
+    justify-items: center;
+  }
+}

@@ -43,8 +43,6 @@ export default function EditPost() {
       try {
         const response = await http.get(`social/posts/${id}`);
         console.log("response", response.data);
-        document.title = `Edit post - ${response.data.title}`;
-
         setEdit(response.data);
       } catch (error) {
         console.log(error.response.data.status);

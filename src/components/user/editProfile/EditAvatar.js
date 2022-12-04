@@ -44,8 +44,6 @@ export default function EditAvatar() {
         const response = await http.get(url);
         console.log("response", response.data);
 
-        document.title = `Edit avatar - ${response.data.name}`;
-
         if (response.data.avatar === null || response.data.avatar === "") {
           response.data.avatar =
             "https://cdn.landesa.org/wp-content/uploads/default-user-image.png";
