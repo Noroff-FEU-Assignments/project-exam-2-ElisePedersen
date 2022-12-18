@@ -39,3 +39,7 @@ When it comes to building the website, I first made sure I was able to make the 
 Lastly, I think the exam has been fun and challenging. I have had some issues, learned something new and gained more knowledge about how everything works. 
 
 Welcome to Share-ish! 
+
+## Contact
+
+[My LinkedIn page](https://www.linkedin.com/in/elisepedersen1/)
