@@ -31,6 +31,7 @@ This will open a webbrowser and run the application in developer mode locally on
 To login, you need to register a new profile. The username must not include space or any punctuation marks except`_`. The email must be a `@stud.noroff.no` or `@noroff.no` email address. The password must be at least 8 characters. 
 
 If you do not want to register a new profile, but just want to look around, you can use this example profile:
+
 Username: heihei@stud.noroff.no
 Password: heiheihei
 
